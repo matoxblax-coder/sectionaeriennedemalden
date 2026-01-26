@@ -102,3 +102,173 @@ footer {
 }
 .fade-in { opacity:0; transition:opacity 1s ease-in; }
 .fade-in.visible { opacity:1; }
+/* --- Section Titles --- */
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(0, 123, 255, 0.8);
+}
+.section-subtitle {
+  max-width: 800px;
+  margin: 0 auto 20px;
+  font-size: 1.2rem;
+  color: #cfd8dc;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* --- Mission Section --- */
+.mission-section {
+  position: relative;
+  background: url('../img/mission-bg.jpg') center/cover fixed;
+  color: white;
+  text-align: center;
+  padding: 140px 10%;
+}
+.mission-section .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 20, 0.6);
+}
+.mission-section .section-content {
+  position: relative;
+  z-index: 2;
+}
+.mission-section blockquote {
+  margin: 20px auto;
+  font-size: 1.5rem;
+  color: #00bfff;
+  font-style: italic;
+}
+.symbol-line {
+  margin-top: 20px;
+  font-size: 1.5rem;
+}
+
+/* --- Stats Section --- */
+.stats-section {
+  background: radial-gradient(circle at center, #0d1a26, #000010);
+  padding: 120px 10%;
+  color: #fff;
+  text-align: center;
+}
+.stats-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+}
+.stat {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.2);
+  transition: transform 0.3s;
+}
+.stat:hover { transform: scale(1.05); }
+.stat h3 {
+  color: #00bfff;
+  font-size: 2.5rem;
+}
+.stat p {
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+/* --- Prestations Section --- */
+.prestations-section {
+  background: url('../img/prestations-bg.jpg') center/cover fixed;
+  position: relative;
+  padding: 140px 8%;
+}
+.prestations-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 20, 0.7);
+}
+.cards {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+.card {
+  position: relative;
+  width: 300px;
+  height: 260px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(255,255,255,0.1);
+}
+.card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+  transition: 0.5s;
+}
+.card:hover .card-bg { opacity: 0.6; }
+.card-content {
+  position: relative;
+  z-index: 2;
+  padding: 30px;
+  color: white;
+}
+.card h3 { font-size: 1.4rem; margin-bottom: 10px; }
+.card p { font-size: 1rem; }
+
+/* Assign background images to each card */
+.card-demo .card-bg { background-image: url('../img/prestation-demo.jpg'); }
+.card-escort .card-bg { background-image: url('../img/prestation-escort.jpg'); }
+.card-train .card-bg { background-image: url('../img/prestation-train.jpg'); }
+
+/* --- Galerie --- */
+.galerie-section {
+  background: url('../img/gallery-bg.jpg') center/cover fixed;
+  padding: 120px 10%;
+  text-align: center;
+}
+.gallery img {
+  border-radius: 10px;
+  filter: brightness(0.9);
+  transition: 0.4s;
+}
+.gallery img:hover { filter: brightness(1.1) saturate(1.2); transform: scale(1.05); }
+
+/* --- Contact --- */
+.contact-section {
+  background: linear-gradient(135deg, #002f6c, #ffffff, #c62828);
+  padding: 120px 10%;
+  text-align: center;
+  color: #000;
+}
+.contact-section form {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+.contact-section input,
+.contact-section textarea {
+  font-size: 1rem;
+  padding: 12px;
+}
+.contact-section button {
+  background: #002f6c;
+  color: white;
+  border: none;
+  font-size: 1.1rem;
+}
+.contact-text {
+  margin-bottom: 30px;
+  font-weight: 500;
+}
