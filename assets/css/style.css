@@ -416,3 +416,36 @@ footer {
     text-align: center;
   }
 }
+#entry-gate {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #0a0f1a, #000);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gate-content {
+  text-align: center;
+  animation: fadeInUp 1.5s ease;
+}
+
+.gate-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+}
+
+.gate-content p {
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
+
+#enter-site {
+  padding: 14px 32px;
+  font-size: 1.1rem;
+  background: linear-gradient(90deg, #007bff, #c62828);
+  border: none;
+  color: white;
+  cursor: pointer;
+}
