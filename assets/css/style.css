@@ -1,274 +1,418 @@
-* { margin:0; padding:0; box-sizing:border-box; }
+/* =====================================================
+   RESET & BASE
+   ===================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background:linear-gradient(180deg,#000010,#0a0f1a);
-  color:white; font-family:'Poppins',sans-serif;
-  overflow-x:hidden; scroll-behavior:smooth;
-}
-
-/* HEADER */
-header {
-  position:fixed; top:0; width:100%;
-  display:flex; justify-content:space-between; align-items:center;
-  background:rgba(0,0,0,0.7); padding:10px 40px;
-  z-index:1000; backdrop-filter:blur(10px);
-}
-.logo { display:flex; align-items:center; gap:10px; }
-.logo img { height:45px; }
-nav ul { display:flex; list-style:none; gap:25px; }
-nav a { color:#fff; text-decoration:none; font-weight:bold; }
-nav a:hover { color:#00aaff; }
-#sound-toggle {
-  background:#007bff; border:none; color:white;
-  padding:8px 15px; border-radius:5px; cursor:pointer;
-}
-
-/* HERO */
-.parallax {
-  height:100vh;
-  background:url('../img/hero.jpg') no-repeat center/cover fixed;
-  display:flex; align-items:center; justify-content:center;
-  text-align:center; position:relative;
-}
-.parallax::after {
-  content:""; position:absolute; inset:0;
-  background:rgba(0,0,0,0.4);
-}
-.hero-content { z-index:2; position:relative; animation:fadeInUp 2s ease; }
-.hero-content h2 { font-size:3rem; text-shadow:0 0 15px #007bff; }
-.hero-content p { margin:10px 0 20px; font-size:1.2rem; }
-.btn {
-  background:linear-gradient(90deg,#007bff,#d32f2f);
-  color:white; padding:10px 25px; border-radius:6px;
-  text-decoration:none; transition:0.3s; font-weight:bold;
-}
-.btn:hover { opacity:0.8; transform:scale(1.05); }
-
-/* CONTENT SECTIONS */
-.content-section { padding:100px 10%; text-align:center; position:relative; }
-.content-section.dark { background:#111; }
-.cards { display:flex; flex-wrap:wrap; gap:25px; justify-content:center; }
-.card {
-  background:rgba(255,255,255,0.08);
-  border-radius:10px; padding:20px; width:280px;
-  transition:transform 0.3s, background 0.3s;
-}
-.card:hover { transform:translateY(-8px); background:rgba(255,255,255,0.15); }
-
-/* GALLERY */
-.gallery {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:15px;
-}
-.gallery img {
-  width:100%; border-radius:10px; transition:transform 0.3s;
-}
-.gallery img:hover { transform:scale(1.05); }
-
-/* STATS */
-.stats-grid {
-  display:flex; flex-wrap:wrap; justify-content:center; gap:30px;
-  margin-top:30px;
-}
-.stat { background:rgba(255,255,255,0.1); padding:20px 30px; border-radius:10px; }
-.stat h3 { color:#00aaff; font-size:2rem; }
-
-/* CONTACT */
-form {
-  display:flex; flex-direction:column; gap:15px;
-  width:80%; max-width:500px; margin:0 auto;
-}
-input,textarea {
-  padding:10px; border:none; border-radius:5px; width:100%;
-}
-button {
-  background:#007bff; border:none; padding:10px 20px;
-  border-radius:5px; color:white; cursor:pointer; transition:0.3s;
-}
-button:hover { background:#0056b3; }
-.socials { margin-top:25px; }
-.socials a { color:#00aaff; margin:0 10px; text-decoration:none; }
-
-/* FOOTER */
-footer {
-  background:#000; padding:15px; text-align:center;
-  border-top:2px solid #007bff; font-size:0.9rem;
-}
-
-/* ANIMATIONS */
-@keyframes fadeInUp {
-  from { opacity:0; transform:translateY(30px); }
-  to { opacity:1; transform:translateY(0); }
-}
-.fade-in { opacity:0; transition:opacity 1s ease-in; }
-.fade-in.visible { opacity:1; }
-/* --- Section Titles --- */
-.section-title {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  text-align: center;
+  font-family: "Arial", sans-serif;
+  background: #0a0f1a;
   color: #ffffff;
-  text-transform: uppercase;
-  text-shadow: 0 0 10px rgba(0, 123, 255, 0.8);
-}
-.section-subtitle {
-  max-width: 800px;
-  margin: 0 auto 20px;
-  font-size: 1.2rem;
-  color: #cfd8dc;
-  line-height: 1.6;
-  text-align: center;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
-/* --- Mission Section --- */
-.mission-section {
-  position: relative;
-  background: url('../img/mission-bg.jpg') center/cover fixed;
-  color: white;
-  text-align: center;
-  padding: 140px 10%;
-}
-.mission-section .overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 20, 0.6);
-}
-.mission-section .section-content {
-  position: relative;
-  z-index: 2;
-}
-.mission-section blockquote {
-  margin: 20px auto;
-  font-size: 1.5rem;
-  color: #00bfff;
-  font-style: italic;
-}
-.symbol-line {
-  margin-top: 20px;
-  font-size: 1.5rem;
+img {
+  max-width: 100%;
+  display: block;
 }
 
-/* --- Stats Section --- */
-.stats-section {
-  background: radial-gradient(circle at center, #0d1a26, #000010);
-  padding: 120px 10%;
-  color: #fff;
-  text-align: center;
-}
-.stats-grid {
+/* =====================================================
+   HEADER
+   ===================================================== */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 32px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo img {
+  height: 44px;
+}
+
+header h1 {
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+#sound-toggle {
+  background: none;
+  border: 1px solid #007bff;
+  color: #ffffff;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+/* =====================================================
+   HERO
+   ===================================================== */
+.parallax {
+  height: 100vh;
+  background: url("../img/hero.jpg") center / cover fixed;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 40px;
-  margin-top: 40px;
-}
-.stat {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(6px);
-  padding: 30px 40px;
-  border-radius: 15px;
-  box-shadow: 0 0 15px rgba(0, 123, 255, 0.2);
-  transition: transform 0.3s;
-}
-.stat:hover { transform: scale(1.05); }
-.stat h3 {
-  color: #00bfff;
-  font-size: 2.5rem;
-}
-.stat p {
-  font-size: 1.1rem;
-  margin-top: 10px;
+  text-align: center;
+  position: relative;
 }
 
-/* --- Prestations Section --- */
-.prestations-section {
-  background: url('../img/prestations-bg.jpg') center/cover fixed;
-  position: relative;
-  padding: 140px 8%;
-}
-.prestations-section::after {
-  content: '';
+.parallax::after {
+  content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 20, 0.7);
+  background: rgba(0, 0, 0, 0.45);
 }
-.cards {
+
+.hero-content {
   position: relative;
   z-index: 2;
+}
+
+.hero-content h2 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  margin-bottom: 25px;
+}
+
+.btn {
+  padding: 12px 26px;
+  background: linear-gradient(90deg, #007bff, #c62828);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+/* =====================================================
+   ALPHAJET SHOWCASE
+   ===================================================== */
+.alphajet-section {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+}
+
+.alphajet-bg {
+  position: absolute;
+  inset: 0;
+  background: url("../img/alphajet-bg.jpg") center / cover no-repeat;
+  filter: brightness(0.6);
+}
+
+.alphajet-word {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(6rem, 18vw, 18rem);
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+}
+
+.alphajet-plane {
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  width: 70%;
+  max-width: 900px;
+  transform: translateY(-50%);
+  z-index: 3;
+}
+
+.alphajet-content {
+  position: absolute;
+  bottom: 15%;
+  right: 10%;
+  max-width: 420px;
+  z-index: 4;
+}
+
+.alphajet-content h2 {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+}
+
+.alphajet-content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* =====================================================
+   GENERIC SECTIONS
+   ===================================================== */
+.section {
+  padding: 140px 10%;
+  text-align: center;
+  position: relative;
+}
+
+.section-symbol {
+  display: block;
+  font-size: 2.5rem;
+  opacity: 0.2;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.section-quote {
+  font-size: 1.4rem;
+  font-style: italic;
+  margin-bottom: 30px;
+  opacity: 0.85;
+}
+
+.section-text {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  font-size: 1.2rem;
+  line-height: 1.7;
+}
+
+/* =====================================================
+   MISSION
+   ===================================================== */
+.mission-section {
+  background: url("../img/mission-bg.jpg") center / cover fixed;
+}
+
+.section-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 20, 0.65);
+}
+
+.section-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.values {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
+  margin-top: 30px;
 }
+
+/* =====================================================
+   PRESTATIONS
+   ===================================================== */
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
 .card {
-  position: relative;
   width: 300px;
   height: 260px;
+  position: relative;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 0 15px rgba(255,255,255,0.1);
 }
+
 .card-bg {
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center;
-  opacity: 0.3;
-  transition: 0.5s;
+  opacity: 0.6;
 }
-.card:hover .card-bg { opacity: 0.6; }
+
+.card-demo .card-bg { background-image: url("../img/prestation-demo.jpg"); }
+.card-escort .card-bg { background-image: url("../img/prestation-escort.jpg"); }
+.card-train .card-bg { background-image: url("../img/prestation-train.jpg"); }
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.75),
+    rgba(0,0,0,0.25)
+  );
+}
+
 .card-content {
   position: relative;
   z-index: 2;
-  padding: 30px;
-  color: white;
+  padding: 25px;
 }
-.card h3 { font-size: 1.4rem; margin-bottom: 10px; }
-.card p { font-size: 1rem; }
 
-/* Assign background images to each card */
-.card-demo .card-bg { background-image: url('../img/prestation-demo.jpg'); }
-.card-escort .card-bg { background-image: url('../img/prestation-escort.jpg'); }
-.card-train .card-bg { background-image: url('../img/prestation-train.jpg'); }
+/* =====================================================
+   AVIS
+   ===================================================== */
+.avis-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
 
-/* --- Galerie --- */
-.galerie-section {
-  background: url('../img/gallery-bg.jpg') center/cover fixed;
-  padding: 120px 10%;
-  text-align: center;
-}
-.gallery img {
-  border-radius: 10px;
-  filter: brightness(0.9);
-  transition: 0.4s;
-}
-.gallery img:hover { filter: brightness(1.1) saturate(1.2); transform: scale(1.05); }
-
-/* --- Contact --- */
-.contact-section {
-  background: linear-gradient(135deg, #002f6c, #ffffff, #c62828);
-  padding: 120px 10%;
-  text-align: center;
-  color: #000;
-}
-.contact-section form {
-  background: rgba(255, 255, 255, 0.8);
+.avis-card {
+  background: rgba(255,255,255,0.08);
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  max-width: 300px;
 }
+
+.avis-card img {
+  height: 50px;
+  margin: 0 auto 15px;
+}
+
+.avis-card p {
+  font-style: italic;
+}
+
+/* =====================================================
+   ATHOS
+   ===================================================== */
+.athos-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.athos-card {
+  background: rgba(255,255,255,0.08);
+  border-radius: 15px;
+  overflow: hidden;
+  max-width: 280px;
+}
+
+.athos-card img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+.athos-card h3 {
+  margin: 15px 0 5px;
+}
+
+.athos-card p {
+  padding: 0 15px 20px;
+  font-size: 0.95rem;
+}
+
+/* =====================================================
+   GALERIE
+   ===================================================== */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.gallery img {
+  border-radius: 10px;
+}
+
+/* =====================================================
+   CONTACT
+   ===================================================== */
+.contact-section {
+  background: linear-gradient(135deg, #002f6c, #ffffff, #c62828);
+  color: #000;
+}
+
+.contact-section form {
+  max-width: 500px;
+  margin: auto;
+  background: rgba(255,255,255,0.85);
+  padding: 30px;
+  border-radius: 15px;
+}
+
 .contact-section input,
 .contact-section textarea {
-  font-size: 1rem;
-  padding: 12px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
 }
-.contact-section button {
-  background: #002f6c;
-  color: white;
-  border: none;
-  font-size: 1.1rem;
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+footer {
+  background: #000;
+  padding: 20px;
+  text-align: center;
 }
-.contact-text {
-  margin-bottom: 30px;
-  font-weight: 500;
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+@media (max-width: 768px) {
+
+  nav ul {
+    display: none;
+  }
+
+  .section {
+    padding: 90px 6%;
+  }
+
+  .cards,
+  .values,
+  .avis-grid,
+  .athos-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .alphajet-plane {
+    width: 90%;
+    left: 5%;
+  }
+
+  .alphajet-content {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin: 40px auto;
+    text-align: center;
+  }
 }

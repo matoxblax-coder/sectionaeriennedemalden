@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Section Aérienne de Malden ✈️</title>
-  <link rel="icon" href="assets/img/logo-sam.png" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Section Aérienne de Malden</title>
+
+  <link rel="icon" href="assets/img/logo-sam.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
 </head>
+
 <body>
 
-<header id="header" class="fade-in">
-  <div class="logo">
-    <img src="assets/img/logo-sam.png" alt="Logo S.A.M." />
+<header>
+  <div class="logo logo-glow">
+    <img src="assets/img/logo-sam.png">
     <h1>SECTION AÉRIENNE DE MALDEN</h1>
   </div>
   <nav>
@@ -19,119 +22,123 @@
       <li><a href="#hero">Accueil</a></li>
       <li><a href="#mission">Mission</a></li>
       <li><a href="#prestations">Prestations</a></li>
-      <li><a href="#stats">Chiffres</a></li>
+      <li><a href="#avis">Avis</a></li>
+      <li><a href="#athos">ATHOS</a></li>
       <li><a href="#galerie">Galerie</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
-  <button id="sound-toggle">🎧 Ambiance OFF</button>
+  <button id="sound-toggle">Ambiance OFF</button>
 </header>
 
+<!-- HERO -->
 <section id="hero" class="parallax">
   <div class="hero-content">
-    <h2 class="fade-in">✈️ SECTION AÉRIENNE DE MALDEN ✈️</h2>
-    <p>“Toujours plus haut, toujours plus fort.”</p>
-    <a href="#mission" class="btn">Décoller 🚀</a>
+    <h2>SECTION AÉRIENNE DE MALDEN</h2>
+    <p>« Toujours plus haut, toujours plus fort. »</p>
+    <a href="#alphajet" class="btn">Décoller</a>
   </div>
 </section>
 
-<!-- ======== MISSION ======== -->
-<section id="mission" class="content-section mission-section fade-in">
-  <div class="overlay"></div>
-  <div class="section-content">
-    <h2 class="section-title">Notre Mission 🛡️</h2>
-    <p class="section-subtitle">
-      Servir, démontrer, inspirer — la <strong>Section Aérienne de Malden</strong> incarne
-      la précision, la rigueur et le courage. Fondée sur les valeurs de l’excellence
-      aéronautique française, elle perpétue la tradition des ailes tricolores.
+<!-- ALPHAJET -->
+<section id="alphajet" class="alphajet-section">
+  <div class="alphajet-bg"></div>
+  <div class="alphajet-word">ALPHAJET</div>
+  <img src="assets/img/alphajet-side.png" class="alphajet-plane">
+  <div class="alphajet-content">
+    <h2>Maîtrise du vol</h2>
+    <p>Plateforme emblématique de la démonstration aérienne.</p>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section id="mission" class="section mission-section fade-in">
+  <div class="section-overlay"></div>
+  <div class="section-inner">
+    <span class="section-symbol">▲</span>
+    <h2 class="section-title">Notre mission</h2>
+    <p class="section-quote">« La rigueur forge l’excellence. »</p>
+    <p class="section-text">
+      Unité dédiée à la démonstration aérienne et à la maîtrise du vol tactique.
     </p>
-    <blockquote>« L’altitude forge le caractère. »</blockquote>
-    <div class="symbol-line">
-      <span>✈️</span><span>🎖️</span><span>🛡️</span><span>⚙️</span>
+    <div class="values">
+      <div>┃┃ Discipline</div>
+      <div>⦿ Précision</div>
+      <div>≡ Cohésion</div>
     </div>
   </div>
 </section>
 
-<!-- ======== STATS ======== -->
-<section id="stats" class="stats-section fade-in">
-  <h2 class="section-title">Nos Chiffres 🔢</h2>
-  <div class="stats-grid">
-    <div class="stat">
-      <h3 id="hours">0</h3><p>Heures de vol</p>
-    </div>
-    <div class="stat">
-      <h3 id="missions">0</h3><p>Missions accomplies</p>
-    </div>
-    <div class="stat">
-      <h3 id="pilots">0</h3><p>Pilotes d’élite</p>
-    </div>
-    <div class="stat">
-      <h3 id="shows">0</h3><p>Démonstrations publiques</p>
-    </div>
-  </div>
-</section>
-
-<!-- ======== PRESTATIONS ======== -->
-<section id="prestations" class="content-section prestations-section fade-in">
-  <h2 class="section-title">Nos Prestations 🎖️</h2>
+<!-- PRESTATIONS -->
+<section id="prestations" class="section prestations-section fade-in">
+  <span class="section-symbol">≡</span>
+  <h2 class="section-title">Prestations</h2>
+  <p class="section-quote">« La maîtrise s’exprime en vol. »</p>
   <div class="cards">
-    <div class="card card-demo">
-      <div class="card-bg"></div>
-      <div class="card-content">
-        <h3>🛫 Démonstrations aériennes</h3>
-        <p>Présentations dynamiques, vols en formation et acrobaties de précision lors d’événements officiels.</p>
-      </div>
+    <div class="card card-demo"><div class="card-bg"></div><div class="card-content"><h3>Démonstrations</h3></div></div>
+    <div class="card card-escort"><div class="card-bg"></div><div class="card-content"><h3>Escortes</h3></div></div>
+    <div class="card card-train"><div class="card-bg"></div><div class="card-content"><h3>Formation</h3></div></div>
+  </div>
+</section>
+
+<!-- AVIS -->
+<section id="avis" class="section avis-section fade-in">
+  <h2 class="section-title">Ils nous font confiance</h2>
+  <div class="avis-grid">
+    <div class="avis-card">
+      <img src="assets/img/avis-1.png">
+      <p>« Prestation d’un professionnalisme remarquable. »</p>
     </div>
-    <div class="card card-escort">
-      <div class="card-bg"></div>
-      <div class="card-content">
-        <h3>🛡️ Escortes protocolaires</h3>
-        <p>Participation honorifique aux cérémonies nationales et vols commémoratifs tricolores.</p>
-      </div>
+    <div class="avis-card">
+      <img src="assets/img/avis-2.png">
+      <p>« Une démonstration aérienne exceptionnelle. »</p>
     </div>
-    <div class="card card-train">
-      <div class="card-bg"></div>
-      <div class="card-content">
-        <h3>⚙️ Formations & interventions</h3>
-        <p>Sessions de pilotage tactique et entraînements conjoints avec d’autres unités aériennes.</p>
-      </div>
+    <div class="avis-card">
+      <img src="assets/img/avis-3.png">
+      <p>« Rigueur, précision, impact visuel. »</p>
     </div>
   </div>
 </section>
 
-<!-- ======== GALERIE ======== -->
-<section id="galerie" class="content-section galerie-section fade-in">
-  <h2 class="section-title">📸 Galerie</h2>
+<!-- ATHOS -->
+<section id="athos" class="section athos-section fade-in">
+  <h2 class="section-title">ATHOS</h2>
+  <p class="section-quote">« L’humain derrière la maîtrise. »</p>
+  <div class="athos-grid">
+    <div class="athos-card"><img src="assets/img/athos-1.jpg"><h3>ATHOS 1</h3><p>Pilote démonstrateur.</p></div>
+    <div class="athos-card"><img src="assets/img/athos-2.jpg"><h3>ATHOS 2</h3><p>Chef de patrouille.</p></div>
+    <div class="athos-card"><img src="assets/img/athos-3.jpg"><h3>ATHOS 3</h3><p>Instructeur.</p></div>
+  </div>
+</section>
+
+<!-- GALERIE -->
+<section id="galerie" class="section galerie-section fade-in">
+  <h2 class="section-title">Galerie</h2>
   <div class="gallery">
-    <img src="assets/img/gallery1.jpg" alt="Vol tricolore" />
-    <img src="assets/img/gallery2.jpg" alt="Patrouille en formation" />
-    <img src="assets/img/gallery3.jpg" alt="Décollage SAM" />
-    <img src="assets/img/gallery4.jpg" alt="Passage au crépuscule" />
+    <img src="assets/img/gallery1.jpg">
+    <img src="assets/img/gallery2.jpg">
+    <img src="assets/img/gallery3.jpg">
+    <img src="assets/img/gallery4.jpg">
   </div>
 </section>
 
-<!-- ======== CONTACT ======== -->
-<section id="contact" class="content-section contact-section fade-in">
-  <h2 class="section-title">📬 Contact</h2>
-  <p class="contact-text">Envoyez-nous un message ou rejoignez notre escadrille :</p>
-  <form id="contact-form">
-    <input type="text" placeholder="Nom" required />
-    <input type="email" placeholder="Email" required />
-    <textarea placeholder="Votre message..." required></textarea>
-    <button type="submit">Envoyer ✉️</button>
+<!-- CONTACT -->
+<section id="contact" class="section contact-section fade-in">
+  <h2 class="section-title">Contact</h2>
+  <form>
+    <input type="text" placeholder="Nom">
+    <input type="email" placeholder="Email">
+    <textarea placeholder="Message"></textarea>
+    <button>Envoyer</button>
   </form>
-  <div class="socials">
-    <a href="#">💬 Discord</a> | <a href="#">📺 YouTube</a> | <a href="#">🐦 Twitter</a>
-  </div>
 </section>
-
 
 <footer>
-  <p>🇫🇷 Liberté • Égalité • Fraternité — © 2026 Section Aérienne de Malden 🇫🇷</p>
+  <p>© 2026 — Section Aérienne de Malden</p>
 </footer>
 
 <audio id="ambiance" loop>
-  <source src="assets/audio/sam-theme.mp3" type="audio/mpeg" />
+  <source src="assets/audio/sam-theme.mp3">
 </audio>
 
 <script src="assets/js/main.js"></script>
