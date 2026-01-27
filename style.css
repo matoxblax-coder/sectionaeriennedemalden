@@ -1,0 +1,451 @@
+/* =====================================================
+   RESET & BASE
+   ===================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background: #0a0f1a;
+  color: #ffffff;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 32px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo img {
+  height: 44px;
+}
+
+header h1 {
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+#sound-toggle {
+  background: none;
+  border: 1px solid #007bff;
+  color: #ffffff;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+/* =====================================================
+   HERO
+   ===================================================== */
+.parallax {
+  height: 100vh;
+  background: url("../img/hero.jpg") center / cover fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.parallax::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content h2 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  margin-bottom: 25px;
+}
+
+.btn {
+  padding: 12px 26px;
+  background: linear-gradient(90deg, #007bff, #c62828);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+/* =====================================================
+   ALPHAJET SHOWCASE
+   ===================================================== */
+.alphajet-section {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+}
+
+.alphajet-bg {
+  position: absolute;
+  inset: 0;
+  background: url("../img/alphajet-bg.jpg") center / cover no-repeat;
+  filter: brightness(0.6);
+}
+
+.alphajet-word {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(6rem, 18vw, 18rem);
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+}
+
+.alphajet-plane {
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  width: 70%;
+  max-width: 900px;
+  transform: translateY(-50%);
+  z-index: 3;
+}
+
+.alphajet-content {
+  position: absolute;
+  bottom: 15%;
+  right: 10%;
+  max-width: 420px;
+  z-index: 4;
+}
+
+.alphajet-content h2 {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+}
+
+.alphajet-content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* =====================================================
+   GENERIC SECTIONS
+   ===================================================== */
+.section {
+  padding: 140px 10%;
+  text-align: center;
+  position: relative;
+}
+
+.section-symbol {
+  display: block;
+  font-size: 2.5rem;
+  opacity: 0.2;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.section-quote {
+  font-size: 1.4rem;
+  font-style: italic;
+  margin-bottom: 30px;
+  opacity: 0.85;
+}
+
+.section-text {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  font-size: 1.2rem;
+  line-height: 1.7;
+}
+
+/* =====================================================
+   MISSION
+   ===================================================== */
+.mission-section {
+  background: url("../img/mission-bg.jpg") center / cover fixed;
+}
+
+.section-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 20, 0.65);
+}
+
+.section-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.values {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+/* =====================================================
+   PRESTATIONS
+   ===================================================== */
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 300px;
+  height: 260px;
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  opacity: 0.6;
+}
+
+.card-demo .card-bg { background-image: url("../img/prestation-demo.jpg"); }
+.card-escort .card-bg { background-image: url("../img/prestation-escort.jpg"); }
+.card-train .card-bg { background-image: url("../img/prestation-train.jpg"); }
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.75),
+    rgba(0,0,0,0.25)
+  );
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+  padding: 25px;
+}
+
+/* =====================================================
+   AVIS
+   ===================================================== */
+.avis-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.avis-card {
+  background: rgba(255,255,255,0.08);
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 300px;
+}
+
+.avis-card img {
+  height: 50px;
+  margin: 0 auto 15px;
+}
+
+.avis-card p {
+  font-style: italic;
+}
+
+/* =====================================================
+   ATHOS
+   ===================================================== */
+.athos-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.athos-card {
+  background: rgba(255,255,255,0.08);
+  border-radius: 15px;
+  overflow: hidden;
+  max-width: 280px;
+}
+
+.athos-card img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+.athos-card h3 {
+  margin: 15px 0 5px;
+}
+
+.athos-card p {
+  padding: 0 15px 20px;
+  font-size: 0.95rem;
+}
+
+/* =====================================================
+   GALERIE
+   ===================================================== */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.gallery img {
+  border-radius: 10px;
+}
+
+/* =====================================================
+   CONTACT
+   ===================================================== */
+.contact-section {
+  background: linear-gradient(135deg, #002f6c, #ffffff, #c62828);
+  color: #000;
+}
+
+.contact-section form {
+  max-width: 500px;
+  margin: auto;
+  background: rgba(255,255,255,0.85);
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.contact-section input,
+.contact-section textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+footer {
+  background: #000;
+  padding: 20px;
+  text-align: center;
+}
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+@media (max-width: 768px) {
+
+  nav ul {
+    display: none;
+  }
+
+  .section {
+    padding: 90px 6%;
+  }
+
+  .cards,
+  .values,
+  .avis-grid,
+  .athos-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .alphajet-plane {
+    width: 90%;
+    left: 5%;
+  }
+
+  .alphajet-content {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin: 40px auto;
+    text-align: center;
+  }
+}
+#entry-gate {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #0a0f1a, #000);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gate-content {
+  text-align: center;
+  animation: fadeInUp 1.5s ease;
+}
+
+.gate-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+}
+
+.gate-content p {
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
+
+#enter-site {
+  padding: 14px 32px;
+  font-size: 1.1rem;
+  background: linear-gradient(90deg, #007bff, #c62828);
+  border: none;
+  color: white;
+  cursor: pointer;
+}
