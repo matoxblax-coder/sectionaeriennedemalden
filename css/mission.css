@@ -1,0 +1,11 @@
+.mission {
+  padding: var(--section-padding);
+  background: var(--dark);
+}
+
+.mission p {
+  max-width: 700px;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  color: var(--muted);
+}
