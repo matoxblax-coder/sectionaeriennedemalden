@@ -1,0 +1,12 @@
+#hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-content p {
+  margin-top: 1.5rem;
+  letter-spacing: 0.3em;
+  color: var(--muted);
+}
