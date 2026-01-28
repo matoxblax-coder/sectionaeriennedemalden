@@ -1,0 +1,40 @@
+#gate {
+  position: fixed;
+  inset: 0;
+  background: var(--black);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gate-inner {
+  text-align: center;
+}
+
+.gate-title {
+  letter-spacing: 0.4em;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.gate-sub {
+  font-size: 0.9rem;
+  opacity: 0.6;
+  margin-bottom: 3rem;
+}
+
+#enter-site {
+  background: none;
+  border: 1px solid var(--muted);
+  color: var(--light);
+  padding: 1rem 2.5rem;
+  letter-spacing: 0.3em;
+  cursor: pointer;
+  transition: all var(--fast) ease;
+}
+
+#enter-site:hover {
+  background: var(--light);
+  color: var(--black);
+}
