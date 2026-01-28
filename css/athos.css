@@ -1,0 +1,25 @@
+.athos {
+  padding: var(--section-padding);
+  background: var(--black);
+}
+
+.athos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 6rem;
+  margin-top: 5rem;
+}
+
+.athos-member img {
+  width: 100%;
+  filter: grayscale(100%) contrast(1.1);
+}
+
+.athos-member h3 {
+  margin-top: 1.5rem;
+  letter-spacing: 0.2em;
+}
+
+.athos-member span {
+  font-size: 0.8rem;
+}
