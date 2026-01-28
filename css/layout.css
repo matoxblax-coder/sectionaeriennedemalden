@@ -1,0 +1,9 @@
+#hero,
+.aircraft-scene,
+.sky-transition {
+  height: 100vh;
+}
+
+.sky-transition {
+  background: radial-gradient(circle at top, #1a1a1a, #000);
+}
