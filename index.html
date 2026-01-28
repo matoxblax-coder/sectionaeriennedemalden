@@ -1,40 +1,99 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>Section Aérienne de Malden</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="icon" href="assets/img/logo-sam.png">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/animations.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/gate.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/aircraft-scenes.css" />
+  <link rel="stylesheet" href="css/mission.css" />
+  <link rel="stylesheet" href="css/avis.css" />
+  <link rel="stylesheet" href="css/athos.css" />
+  <link rel="stylesheet" href="css/contact.css" />
 </head>
 
 <body>
-<div id="entry-gate">
-  <div class="gate-content">
-    <h1>SECTION AÉRIENNE DE MALDEN</h1>
-    <p>Unité de démonstration aérienne</p>
-    <button id="enter-site">Décoller</button>
+
+<!-- ================= GATE ================= -->
+<div id="gate">
+  <div class="gate-inner">
+    <p class="gate-title">SECTION AÉRIENNE DE MALDEN</p>
+    <p class="gate-sub">Autorisation de décollage requise</p>
+    <button id="enter-site">▲ ENTRER</button>
   </div>
 </div>
 
-<header>
-  <div class="logo logo-glow">
-    <img src="assets/img/logo-sam.png">
-    <h1>SECTION AÉRIENNE DE MALDEN</h1>
+<!-- ================= HERO ================= -->
+<section id="hero">
+  <div class="hero-content">
+    <h1>S.A.M.</h1>
+    <p>Discipline — Précision — Engagement</p>
   </div>
-  <nav>
-    <ul>
-      <li><a href="#hero">Accueil</a></li>
-      <li><a href="#mission">Mission</a></li>
-      <li><a href="#prestations">Prestations</a></li>
-      <li><a href="#avis">Avis</a></li>
-      <li><a href="#athos">ATHOS</a></li>
-      <li><a href="#galerie">Galerie</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+</section>
+
+<!-- ========== TRANSITION CIEL ========== -->
+<section class="sky-transition"></section>
+
+<!-- ========== ALPHAJET SCENE ========== -->
+<section class="aircraft-scene alphajet">
+  <img src="assets/img/alphajet.png" class="aircraft" alt="AlphaJet">
+
+  <div class="scene-track">
+    <div class="scene-panel" data-bg="assets/img/sky-1.jpg">
+      <h2>ALPHAJET</h2>
+      <span>MEETING</span>
+    </div>
+    <div class="scene-panel" data-bg="assets/img/sky-2.jpg">
+      <h2>ALPHAJET</h2>
+      <span>COORDINATION</span>
+    </div>
+    <div class="scene-panel" data-bg="assets/img/sky-3.jpg">
+      <h2>ALPHAJET</h2>
+      <span>RIGUEUR</span>
+    </div>
+    <div class="scene-panel" data-bg="assets/img/sky-1.jpg">
+      <h2>ALPHAJET</h2>
+      <span>DISCIPLINE</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== RAFALE SCENE ========== -->
+<section class="aircraft-scene rafale">
+  <img src="assets/img/rafale.png" class="aircraft" alt="Rafale">
+
+  <div class="scene-track">
+    <div class="scene-panel" data-bg="assets/img/sky-2.jpg">
+      <h2>RAFALE</h2>
+      <span>PERMANENCE OPÉRATIONNELLE</span>
+    </div>
+    <div class="scene-panel" data-bg="assets/img/sky-3.jpg">
+      <h2>RAFALE</h2>
+      <span>SURVEILLANCE</span>
+    </div>
+    <div class="scene-panel" data-bg="assets/img/sky-1.jpg">
+      <h2>RAFALE</h2>
+      <span>ENDURANCE</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SCRIPTS ================= -->
+<script src="js/gate.js"></script>
+<script src="js/scroll-core.js"></script>
+<script src="js/aircraft-scenes.js"></script>
+<script src="js/parallax.js"></script>
+
+</body>
+</html>  </nav>
   <button id="sound-toggle">Ambiance OFF</button>
 </header>
 
@@ -152,3 +211,4 @@
 <script src="assets/js/counters.js"></script>
 </body>
 </html>
+
