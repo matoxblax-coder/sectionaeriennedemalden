@@ -1,0 +1,10 @@
+.contact {
+  padding: var(--section-padding);
+  background: #0a0a0a;
+  text-align: center;
+}
+
+.contact p {
+  margin-top: 2rem;
+  color: var(--muted);
+}
