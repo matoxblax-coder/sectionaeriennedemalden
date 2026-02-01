@@ -44,7 +44,13 @@
     }, prefersReduced ? 0 : 560);
   }
 
-  function initGate(){
+  
+  function applyCurve(p, curve){
+    if (curve === "easeOut") return 1 - Math.pow(1 - p, 2);
+    if (curve === "easeInOut") return p < 0.5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2)/2;
+    return p;
+  }
+function initGate(){
     lock();
     const ok = localStorage.getItem("sam_gate_ok") === "1";
     if (ok && !shouldForceGate()){
@@ -126,6 +132,8 @@
       this.steps = parseInt(root.getAttribute("data-steps") || "1", 10);
       this.axis = root.getAttribute("data-axis") || "x";
       this.ease = parseFloat(root.getAttribute("data-ease") || "0.08");
+      this.speed = parseFloat(root.getAttribute("data-speed") || "1");
+      this.curve = root.getAttribute("data-curve") || "linear";
 
       this.target = 0;   // target progress 0..1
       this.current = 0;  // inertial progress
@@ -178,7 +186,9 @@
     }
 
     onScroll(){
-      this.target = this.getScrollProgress();
+      const base = this.getScrollProgress();
+      const curved = applyCurve(base, this.curve);
+      this.target = clamp(curved * this.speed, 0, 1);
     }
 
     loop(){
@@ -203,9 +213,9 @@
 
       // Plane micro-drift (mass effect): tiny opposite drift
       if (this.plane && !prefersReduced){
-        const driftX = this.mouseX * -6;   // px
-        const driftY = this.mouseY * -4;   // px
-        this.plane.style.transform = `translate3d(calc(-50% + ${driftX}px), ${driftY}px, 0)`;
+        const driftX = this.mouseX * -4.5;   // px
+        const driftY = this.mouseY * -3.2;   // px
+        this.plane.style.transform = `translate3d(calc(-50% + ${driftX}px), calc(-50% + ${driftY}px), 0)`;
       }
 
       this._raf = requestAnimationFrame(()=> this.loop());
