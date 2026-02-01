@@ -19,7 +19,7 @@
   --radius: 18px;
 
   --caps: 0.18em;
-  --display: "Barlow Condensed", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  --display: "Saira Condensed", "Barlow Condensed", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans", "Liberation Sans", sans-serif;
   --font: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans", "Liberation Sans", sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
@@ -259,6 +259,58 @@ main{ position:relative; z-index:10; }
   background:linear-gradient(90deg, transparent, rgba(231,236,243,.12), transparent);
 }
 
+/* Deck panel (text on imagery)
+   Used inside immersive sections to avoid low-contrast white-on-photo.
+   Adds relief without "marketing" UI. */
+.deck{
+  position:relative;
+  border:1px solid rgba(231,236,243,.14);
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(8,12,18,.86), rgba(8,12,18,.62));
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 24px 80px rgba(0,0,0,.55);
+  padding: clamp(18px, 2.6vw, 32px);
+  overflow:hidden;
+}
+.deck::before{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    radial-gradient(520px 220px at 18% 0%, rgba(116,147,180,.18), transparent 62%),
+    repeating-linear-gradient(90deg, rgba(231,236,243,.025) 0 1px, transparent 1px 12px);
+  opacity:.62;
+  pointer-events:none;
+}
+.deck::after{
+  content:"";
+  position:absolute;
+  inset:12px;
+  border:1px solid rgba(231,236,243,.06);
+  border-radius: 16px;
+  pointer-events:none;
+}
+.deck > *{ position:relative; z-index:1; }
+.deck .kicker{
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(231,236,243,.10);
+  border-radius: 999px;
+  padding: 8px 12px;
+  margin-bottom: 16px;
+}
+.deck .kicker::before{ display:none; }
+.deck .lead{ color: rgba(231,236,243,.78); }
+.deck .title{ text-shadow: 0 18px 70px rgba(0,0,0,.65); }
+
+@supports (-webkit-background-clip: text) {
+  .deck .title{
+    background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(231,236,243,.70));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
 .reveal{
   opacity:0;
   transform: translateY(14px);
@@ -453,6 +505,18 @@ main{ position:relative; z-index:10; }
   height:auto;
 }
 
+/* Local scrim to guarantee HUD readability on bright frames */
+.immersive__scrim{
+  position:absolute;
+  inset:0;
+  z-index:4;
+  pointer-events:none;
+  background:
+    radial-gradient(820px 420px at 14% 10%, rgba(0,0,0,.78), transparent 62%),
+    linear-gradient(180deg, rgba(0,0,0,.72), rgba(0,0,0,.00) 44%);
+  opacity:.92;
+}
+
 .immersive__hud{
   position:absolute;
   z-index:5;
@@ -466,11 +530,34 @@ main{ position:relative; z-index:10; }
   pointer-events:none;
 }
 .hudBox{
-  border:1px solid rgba(231,236,243,.14);
-  background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
-  border-radius: 14px;
-  padding: 14px 16px;
-  max-width:min(540px, 78vw);
+  position:relative;
+  border:1px solid rgba(231,236,243,.16);
+  background: linear-gradient(180deg, rgba(6,10,16,.86), rgba(6,10,16,.62));
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 18px 60px rgba(0,0,0,.55);
+  border-radius: 16px;
+  padding: 16px 18px;
+  max-width:min(560px, 86vw);
+  overflow:hidden;
+}
+.hudBox::before{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    radial-gradient(420px 200px at 16% 0%, rgba(116,147,180,.20), transparent 60%),
+    repeating-linear-gradient(90deg, rgba(231,236,243,.020) 0 1px, transparent 1px 12px);
+  opacity:.55;
+  pointer-events:none;
+}
+.hudBox::after{
+  content:"";
+  position:absolute;
+  left:0; top:0; bottom:0;
+  width:3px;
+  background: linear-gradient(180deg, rgba(116,147,180,.70), rgba(116,147,180,.05));
+  opacity:.85;
+  pointer-events:none;
 }
 .hudBox__a{
   font-family:var(--mono);
@@ -479,11 +566,13 @@ main{ position:relative; z-index:10; }
   text-transform:uppercase;
   color:rgba(231,236,243,.62);
   margin:0 0 8px;
+  text-shadow: 0 2px 24px rgba(0,0,0,.75);
 }
 .hudBox__b{
   margin:0;
   color:rgba(231,236,243,.74);
   line-height:1.55;
+  text-shadow: 0 2px 24px rgba(0,0,0,.75);
 }
 .hudR{
   text-align:right;
@@ -491,8 +580,14 @@ main{ position:relative; z-index:10; }
   font-size:11px;
   letter-spacing:.18em;
   text-transform:uppercase;
-  color:rgba(231,236,243,.42);
-  padding-top: 10px;
+  color:rgba(231,236,243,.58);
+  padding: 10px 12px;
+  border:1px solid rgba(231,236,243,.10);
+  border-radius: 999px;
+  background: rgba(6,10,16,.48);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 14px 40px rgba(0,0,0,.40);
 }
 
 /* Content sections */
