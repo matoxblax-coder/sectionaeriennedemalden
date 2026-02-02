@@ -3,452 +3,522 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
   <title>Section Aérienne de Malden — S.A.M.</title>
-  <meta name="description" content="Site officiel — Section Aérienne de Malden (S.A.M.)." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <meta name="description" content="Canal institutionnel — accès contrôlé. Doctrine, rigueur, permanence." />
+  <link rel="preload" as="image" href="assets/hero-runway.jpg" />
+  <link rel="icon" href="assets/sam-logo.png" />
   <link rel="stylesheet" href="css/main.css" />
 </head>
 
-<body class="is-locked">
-  <div class="hud" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
+<body class="is-gate-locked">
+  <a class="skip" href="#main">Aller au contenu</a>
 
-  <!-- 0. GATE -->
-  <div class="gate" id="gate" role="dialog" aria-modal="true" aria-label="Autorisation de décollage requise">
+  <!-- GATE / ÉCRAN D’ENTRÉE -->
+  <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title" aria-describedby="gate-desc">
+    <div class="gate__bg" aria-hidden="true"></div>
     <div class="gate__card">
       <div class="gate__top">
-        <div class="stamp">
-          SECTION AÉRIENNE DE MALDEN<br/>
-          SITE OFFICIEL — ACCÈS CONTRÔLÉ
-        </div>
-        <div class="stamp" style="text-align:right;">
-          PROCÉDURE<br/>
-          AUTH / GATE
+        <div class="gate__stamp" aria-hidden="true">PROCÉDURE</div>
+        <div class="gate__codes" aria-hidden="true">
+          <span class="code">AUTH</span><span class="sep">/</span><span class="code">GATE</span>
         </div>
       </div>
 
-      <h1>Autorisation de décollage requise</h1>
-      <p>
+      <h1 id="gate-title" class="gate__title">Autorisation de décollage requise</h1>
+      <p id="gate-desc" class="gate__text">
         Accès soumis à validation. Ce site présente une unité aéronautique opérant selon une doctrine exigeante.
-        Poursuivre implique acceptation implicite d’un cadre de consultation sobre et institutionnel.
+        Continuer implique l’acceptation d’un cadre de consultation sobre, institutionnel et contrôlé.
       </p>
 
-      <div class="gate__cta">
-        <button class="btn" id="enterBtn">Autoriser / Entrer</button>
-        <div class="gate__note">
-          Session mémorisée localement. Pour forcer le gate : ajouter <span style="opacity:.85;">?gate=1</span> à l’URL.
-        </div>
+      <div class="gate__actions">
+        <button class="btn btn--primary" id="gate-enter">
+          Autoriser / Entrer
+        </button>
+      </div>
+
+      <div class="gate__foot">
+        <span class="gate__meta">Session mémorisée localement.</span>
+        <span class="gate__meta">Forcer le gate : ajouter <code>?gate=1</code> à l’URL.</span>
       </div>
     </div>
   </div>
 
-  <header>
-    <div class="mast">
-      <a class="brand" href="#top" aria-label="Retour haut de page">
-        
-        <img class="brand__mark" src="assets/sam-logo-72.png" alt="S.A.M." />
-        <div class="brand__stack">
-          <div class="brand__a">S.A.M.</div>
-          <div class="brand__b">Section Aérienne de Malden</div>
-        </div>
-    
+  <!-- HEADER -->
+  <header class="topbar" aria-label="En-tête">
+    <div class="topbar__left">
+      <a class="brand" href="#hero" aria-label="Retour au début">
+        <img class="brand__logo" src="assets/sam-logo.png" alt="Logo S.A.M." width="44" height="44" decoding="async" />
+        <span class="brand__text">
+          <span class="brand__name">S.A.M.</span>
+          <span class="brand__sub">Section Aérienne de Malden</span>
+        </span>
       </a>
-      <div class="status">
-        <span class="dot" aria-hidden="true"></span>
-        <span>CANAL INSTITUTIONNEL</span>
+    </div>
+
+    <div class="topbar__right" aria-hidden="true">
+      <div class="topbar__status">
+        <span class="dot"></span>
+        <span class="label">CANAL INSTITUTIONNEL</span>
       </div>
     </div>
   </header>
 
-  <main id="top">
-    <!-- 1. HERO / DÉCOLLAGE -->
+  <main id="main">
+    <!-- HERO / DÉCOLLAGE -->
     <section class="hero" id="hero" aria-label="Décollage">
-      <div class="hero__bg" aria-hidden="true"></div>
-      <img class="hero__emblem" src="assets/sam-logo-wm.png" alt="" aria-hidden="true" />
-      <div class="wrap hero__content">
-        <p class="hero__kicker" data-hero="kicker">SECTION AÉRIENNE DE MALDEN — UNITÉ AÉRONAUTIQUE</p>
-        <h1 class="hero__h1" data-hero="h1">DÉCOLLAGE AUTORISÉ. LIGNE TENUE.</h1>
-        <p class="hero__sub" data-hero="sub">
+      <div class="hero__bg" aria-hidden="true">
+        <img class="hero__img" src="assets/hero-runway.jpg" alt="" decoding="async" />
+      </div>
+
+      <div class="hero__hud" aria-hidden="true"></div>
+
+      <div class="hero__wm" aria-hidden="true">
+        <img class="hero__wmImg" src="assets/sam-logo-wm.png" alt="" decoding="async" />
+      </div>
+
+      <div class="hero__content">
+        <p class="kicker" data-reveal>SECTION AÉRIENNE DE MALDEN — UNITÉ AÉRONAUTIQUE</p>
+
+        <h1 class="title" data-reveal>
+          DÉCOLLAGE AUTORISÉ.<br />
+          <span class="title__accent">LIGNE TENUE.</span>
+        </h1>
+
+        <p class="lede" data-reveal>
           Organisation aéronautique indépendante. Vol en formation, démonstration publique, permanence opérationnelle.
           Discipline volontaire : procédures, sécurité, sobriété de communication. Une signature : présence, sans bruit.
         </p>
 
-        <div class="hero__meta" data-hero="meta">
-          <div class="meta">
-            <p class="meta__a">Cadre</p>
-            <p class="meta__b">Vol en formation / procédures / sécurité</p>
-          </div>
-          <div class="meta">
-            <p class="meta__a">Ligne</p>
-            <p class="meta__b">Institutionnel, dense, sans bruit</p>
-          </div>
-          <div class="meta">
-            <p class="meta__a">Séquence</p>
-            <p class="meta__b">Décollage → immersion → mission → unité</p>
+        <div class="hero__cta" data-reveal>
+          <a class="btn btn--primary" href="#doctrine">Consulter le cadre</a>
+          <a class="btn btn--ghost" href="#contact">Déposer une demande</a>
+        </div>
+
+        <div class="hero__rails" aria-hidden="true">
+          <div class="rail rail--left"></div>
+          <div class="rail rail--right"></div>
+          <div class="beacons">
+            <span class="beacon"></span><span class="beacon"></span><span class="beacon"></span>
           </div>
         </div>
       </div>
-    
-      <div class="sectionEdge" aria-hidden="true"></div>
-      <div class="runwayBand" data-marker="TAKEOFF" data-tone="amber" aria-hidden="true"></div>
-</section>
+    </section>
 
-    <!-- 2. TRANSITION CIEL -->
-    <section class="sky" id="transition-sky" aria-label="Transition ciel">
-      <div class="sky__bg" id="skyBg" aria-hidden="true"></div>
-      <div class="sky__mask" aria-hidden="true"></div>
-    
-      <div class="sectionEdge" aria-hidden="true"></div>
-      <div class="runwayBand" data-marker="CLIMB" data-tone="ice" aria-hidden="true"></div>
-</section>
+    <!-- TRANSITION CIEL (silence) -->
+    <section class="silence" aria-label="Transition">
+      <div class="silence__bg" aria-hidden="true"></div>
+      <div class="silence__hud" aria-hidden="true"></div>
+      <div class="silence__label" data-reveal>
+        <span class="kicker kicker--thin">SILENCE / ALTITUDE</span>
+        <h2 class="h2">Respiration.</h2>
+        <p class="p">
+          Le bruit cesse. Les paramètres se stabilisent. Le cadre reste intact.
+        </p>
+      </div>
+    </section>
 
-    <!-- 3. SECTION IMMERSIVE ALPHAJET (MAJEURE) -->
-    <section
-      class="immersive-section"
-      aria-label="Immersion AlphaJet"
-      style="height: 220svh;"
-    >
-      <div
-        class="immersive"
-        data-immersive="module"
-        data-theme="alphajet"
-        data-theme="rafale"
-        data-speed="1.30"
-        data-steps="4"
-        data-ease="0.08"
-        data-hud-titles="MEETING|COORDINATION|RIGUEUR|DISCIPLINE"
-        data-hud-texts="Présence maîtrisée. Cadre public. Exécution nette.|Synchronisation, procédures, communications. Aucun flottement.|Contrôle des paramètres. Marges. Sécurité.|Tenue, précision, sobriété. La forme suit la doctrine."
-      >
-        <div class="immersive__bgTrack" aria-hidden="true">
-          <div class="immersive__panel" style="background-image:url('assets/alphajet-bg-01.jpg')"></div>
-          <div class="immersive__panel" style="background-image:url('assets/alphajet-bg-02.jpg')"></div>
-          <div class="immersive__panel" style="background-image:url('assets/alphajet-bg-03.jpg')"></div>
-          <div class="immersive__panel" style="background-image:url('assets/alphajet-bg-04.jpg')"></div>
+    <!-- SECTION IMMERSIVE ALPHAJET (MAJEURE) -->
+    <section class="module module--alphajet js-module" id="alphajet" aria-label="Module AlphaJet" data-module="alphajet" data-steps="4">
+      <div class="module__sticky" aria-hidden="false">
+        <div class="module__bg" aria-hidden="true">
+          <div class="bg__strip">
+            <div class="bg__slide"><img data-src="assets/alphajet-bg-01.jpg" alt="" /></div>
+            <div class="bg__slide"><img data-src="assets/alphajet-bg-02.jpg" alt="" /></div>
+            <div class="bg__slide"><img data-src="assets/alphajet-bg-03.jpg" alt="" /></div>
+            <div class="bg__slide"><img data-src="assets/alphajet-bg-04.jpg" alt="" /></div>
+          </div>
+          <div class="bg__scrim" aria-hidden="true"></div>
+          <div class="bg__hud" aria-hidden="true"></div>
         </div>
 
-        <div class="immersive__scrim" aria-hidden="true"></div>
+        <div class="module__word" aria-hidden="true">ALPHAJET</div>
 
-        <div class="immersive__word" aria-hidden="true">
-          <h2 class="word is-strong" data-word-step="0">ALPHAJET</h2>
-          <h2 class="word" data-word-step="1">ALPHAJET</h2>
-          <h2 class="word" data-word-step="2">ALPHAJET</h2>
-          <h2 class="word" data-word-step="3">ALPHAJET</h2>
+        <img class="module__aircraft" src="assets/alphajet.png" alt="AlphaJet" width="920" height="360" decoding="async" />
+
+        <div class="module__panel panel" data-reveal>
+          <div class="panel__top">
+            <div class="panel__kicker">
+              <span class="tag">ÉTAPE</span>
+              <span class="step"><span class="js-stepIndex">01</span>/<span class="js-stepTotal">04</span></span>
+            </div>
+            <div class="panel__marks" aria-hidden="true">
+              <span class="mark"></span><span class="mark"></span><span class="mark"></span>
+            </div>
+          </div>
+
+          <h2 class="h2 js-stepTitle">MEETING</h2>
+          <p class="p js-stepText">
+            Présence maîtrisée. Cadre public. Exécution nette.
+          </p>
+
+          <div class="panel__footer">
+            <div class="dots" role="tablist" aria-label="Étapes AlphaJet">
+              <button class="dotBtn is-active" type="button" aria-label="Étape 1" data-step-dot></button>
+              <button class="dotBtn" type="button" aria-label="Étape 2" data-step-dot></button>
+              <button class="dotBtn" type="button" aria-label="Étape 3" data-step-dot></button>
+              <button class="dotBtn" type="button" aria-label="Étape 4" data-step-dot></button>
+            </div>
+            <div class="panel__micro" aria-hidden="true">IMMERSION / MODULE MAJEUR</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="module__spacer" aria-hidden="true"></div>
+    </section>
+
+    <!-- SECTION IMMERSIVE RAFALE (SECONDE COUCHE) -->
+    <section class="module module--rafale js-module" id="rafale" aria-label="Module Rafale" data-module="rafale" data-steps="3">
+      <div class="module__sticky" aria-hidden="false">
+        <div class="module__bg" aria-hidden="true">
+          <div class="bg__strip">
+            <div class="bg__slide"><img data-src="assets/rafale-bg-01.jpg" alt="" /></div>
+            <div class="bg__slide"><img data-src="assets/rafale-bg-02.jpg" alt="" /></div>
+            <div class="bg__slide"><img data-src="assets/rafale-bg-03.jpg" alt="" /></div>
+          </div>
+          <div class="bg__scrim" aria-hidden="true"></div>
+          <div class="bg__hud" aria-hidden="true"></div>
         </div>
 
-        <div class="immersive__hud">
-          <div class="hudBox">
-            <p class="hudBox__a" data-hud-step>ÉTAPE 01/04</p>
-            <p class="hudBox__a" style="opacity:.8;margin-top:10px;" data-hud-title>MEETING</p>
-            <p class="hudBox__b" data-hud-text>
-              Présence maîtrisée. Cadre public. Exécution nette.
+        <div class="module__word" aria-hidden="true">RAFALE</div>
+
+        <img class="module__aircraft" src="assets/rafale.png" alt="Rafale" width="960" height="360" decoding="async" />
+
+        <div class="module__panel panel" data-reveal>
+          <div class="panel__top">
+            <div class="panel__kicker">
+              <span class="tag">ÉTAPE</span>
+              <span class="step"><span class="js-stepIndex">01</span>/<span class="js-stepTotal">03</span></span>
+            </div>
+            <div class="panel__marks" aria-hidden="true">
+              <span class="mark"></span><span class="mark"></span><span class="mark"></span>
+            </div>
+          </div>
+
+          <h2 class="h2 js-stepTitle">PERMANENCE OPÉRATIONNELLE</h2>
+          <p class="p js-stepText">
+            Maintien de capacité. Présence. Disponibilité.
+          </p>
+
+          <div class="panel__footer">
+            <div class="dots" role="tablist" aria-label="Étapes Rafale">
+              <button class="dotBtn is-active" type="button" aria-label="Étape 1" data-step-dot></button>
+              <button class="dotBtn" type="button" aria-label="Étape 2" data-step-dot></button>
+              <button class="dotBtn" type="button" aria-label="Étape 3" data-step-dot></button>
+            </div>
+            <div class="panel__micro" aria-hidden="true">IMMERSION / COUCHE 2</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="module__spacer" aria-hidden="true"></div>
+    </section>
+
+    <!-- MISSION / DOCTRINE -->
+    <section class="doctrine" id="doctrine" aria-label="Mission et doctrine">
+      <div class="wrap">
+        <div class="sectionHead" data-reveal>
+          <p class="kicker">MISSION / DOCTRINE</p>
+          <h2 class="h2">Une ligne. Un cadre.</h2>
+        </div>
+
+        <div class="grid grid--2">
+          <article class="panel panel--dense" data-reveal>
+            <h3 class="h3">Doctrine d’exécution</h3>
+            <p class="p">
+              La S.A.M. s’impose une discipline volontaire : standardisation des procédures, sobriété de communication,
+              sécurité et tenue en toutes circonstances. La visibilité publique n’autorise aucune approximation.
             </p>
-          </div>
-          <div class="hudR">IMMERSION / MODULE MAJEUR</div>
-        </div>
-
-        <div class="immersive__plane" aria-hidden="true">
-          <img src="assets/alphajet.png" alt="" />
-        </div>
-      </div>
-
-      <div class="section">
-        <div class="wrap">
-          <div class="deck reveal-once">
-            <p class="kicker">MODULE — ALPHAJET</p>
-            <h2 class="title">ALIGNEMENT. COORDINATION. DISCIPLINE.</h2>
-            <p class="lead">
-              
-              La démonstration n’est pas un spectacle : c’est une exécution. Brief court, plan clair, marges contrôlées.
-              L’AlphaJet impose le rythme : tenue de position, corrections minimales, sécurité permanente.
-            
-            </p>
-            <div class="rule"></div>
-          </div>
-        </div>
-      </div>
-    
-      <div class="sectionEdge" aria-hidden="true"></div>
-      <div class="runwayBand" data-marker="ALPHAJET" data-tone="amber" aria-hidden="true"></div>
-</section>
-
-    <!-- 4. SECTION IMMERSIVE RAFALE (SECONDE COUCHE) -->
-    <section
-      class="immersive-section"
-      aria-label="Immersion Rafale"
-      style="height: 190svh;"
-    >
-      <div
-        class="immersive"
-        data-immersive="module"
-        data-speed="1.35"
-        data-steps="3"
-        data-ease="0.075"
-        data-hud-titles="PERMANENCE OPÉRATIONNELLE|SURVEILLANCE|ENDURANCE"
-        data-hud-texts="Maintien de capacité. Présence. Disponibilité.|Observation. Couverture. Lecture de l’environnement.|Durée, rythme, fatigue contrôlée. Aucun excès."
-      >
-        <div class="immersive__bgTrack" aria-hidden="true">
-          <div class="immersive__panel" style="background-image:url('assets/rafale-bg-01.jpg')"></div>
-          <div class="immersive__panel" style="background-image:url('assets/rafale-bg-02.jpg')"></div>
-          <div class="immersive__panel" style="background-image:url('assets/rafale-bg-03.jpg')"></div>
-        </div>
-
-        <div class="immersive__scrim" aria-hidden="true"></div>
-
-        <div class="immersive__word" aria-hidden="true">
-          <h2 class="word is-strong" data-word-step="0">RAFALE</h2>
-          <h2 class="word" data-word-step="1">RAFALE</h2>
-          <h2 class="word" data-word-step="2">RAFALE</h2>
-        </div>
-
-        <div class="immersive__hud">
-          <div class="hudBox">
-            <p class="hudBox__a" data-hud-step>ÉTAPE 01/03</p>
-            <p class="hudBox__a" style="opacity:.8;margin-top:10px;" data-hud-title>PERMANENCE OPÉRATIONNELLE</p>
-            <p class="hudBox__b" data-hud-text>
-              Maintien de capacité. Présence. Disponibilité.
-            </p>
-          </div>
-          <div class="hudR">IMMERSION / COUCHE 2</div>
-        </div>
-
-        <div class="immersive__plane" aria-hidden="true">
-          <img src="assets/rafale.png" alt="" />
-        </div>
-      </div>
-
-      <div class="section">
-        <div class="wrap">
-          <div class="deck reveal-once">
-            <p class="kicker">MODULE — RAFALE</p>
-            <h2 class="title">PERMANENCE. SURVEILLANCE. ENDURANCE.</h2>
-            <p class="lead">
-              
-              Couche supérieure : continuité de présence. Maintien des paramètres, lecture de situation, endurance.
-              On tient la mission du début à la fin — sans sur-jeu, sans folklore.
-            
-            </p>
-            <div class="rule"></div>
-          </div>
-        </div>
-      </div>
-    
-      <div class="sectionEdge" aria-hidden="true"></div>
-      <div class="runwayBand" data-marker="RAFALE" data-tone="ice" aria-hidden="true"></div>
-</section>
-
-    <!-- 5. MISSION / DOCTRINE -->
-    <section class="section" id="mission" aria-label="Mission doctrine">
-      <div class="wrap">
-        <p class="kicker reveal-once">MISSION / DOCTRINE</p>
-        <h2 class="title reveal-once">UNE LIGNE. UN CADRE.</h2>
-        <p class="lead reveal-once">
-          La S.A.M. s’impose une discipline volontaire : standardisation des procédures, sobriété de communication,
-          sécurité et tenue en toutes circonstances. La visibilité publique n’autorise aucune approximation.
-        </p>
-        <div class="rule"></div>
-      </div>
-    
-      <div class="sectionEdge" aria-hidden="true"></div>
-      <div class="runwayBand" data-marker="DOCTRINE" data-tone="ice" aria-hidden="true"></div>
-</section>
-
-    <!-- 6. PRESTATIONS -->
-    <section class="section" id="prestations" aria-label="Prestations">
-      <div class="wrap">
-        <p class="kicker reveal-once">PRESTATIONS</p>
-        <h2 class="title reveal-once">CAPACITÉS DÉMONSTRATIVES.</h2>
-        <p class="lead reveal-once">
-          Interventions cadrées, démonstration et entraînement. Les moyens sont présentés sans emphase.
-          La crédibilité vient de la constance et du niveau d’exécution.
-        </p>
-
-        <div class="grid3">
-          <article class="card reveal-once">
-            <div class="card__img" style="background-image:url('assets/prestation-escort.jpg')"></div>
-            <div class="card__body">
-              <p class="card__t">Escort / Formation</p>
-              <p class="card__p">Vol encadré, tenue de position, transitions propres, sécurité prioritaire.</p>
-            </div>
-          </article>
-
-          <article class="card reveal-once">
-            <div class="card__img" style="background-image:url('assets/prestation-training.jpg')"></div>
-            <div class="card__body">
-              <p class="card__t">Training / Procédures</p>
-              <p class="card__p">Brief, check-lists, communication. Répétition jusqu’à stabilité d’exécution.</p>
-            </div>
-          </article>
-
-          <article class="card reveal-once">
-            <div class="card__img" style="background-image:url('assets/prestation-demo.jpg')"></div>
-            <div class="card__body">
-              <p class="card__t">Démo / Meeting</p>
-              <p class="card__p">Démonstration sobre. Synchronisation. Scénario maîtrisé. Aucune surenchère.</p>
-            </div>
-          </article>
-        </div>
-
-        <div class="rule"></div>
-      </div>
-    
-      <div class="sectionEdge" aria-hidden="true"></div>
-      <div class="runwayBand" data-marker="TASKING" data-tone="amber" aria-hidden="true"></div>
-</section>
-
-    <!-- 7. AVIS / LÉGITIMITÉ -->
-    <section class="section" id="legitimite" aria-label="Légitimité">
-      <div class="wrap">
-        <p class="kicker reveal-once">LÉGITIMITÉ</p>
-        <h2 class="title reveal-once">RECONNAISSANCE ET CADRE.</h2>
-        <p class="lead reveal-once">
-          La légitimité n’est pas un décor. Elle se construit par la tenue : régularité, sécurité, cadre public.
-          Repères institutionnels : signatures, validations, citations — format sobre, traçable.
-        </p>
-
-        <div class="logos reveal-once">
-  <img src="assets/sam-logo.png" alt="S.A.M." />
-  <div class="logos__sep" aria-hidden="true"></div>
-  <div class="logos__ph">Espace signatures officielles (à compléter)</div>
-</div>
-
-        <div class="quotes">
-          <div class="quote reveal-once">
-            <p class="quote__a">CITATION / CADRE</p>
-            <p class="quote__b">« La visibilité impose la discipline. Toute démonstration publique doit rester sobre, maîtrisée et sécurisée. »</p>
-            <p class="quote__c">— Autorité de coordination (placeholder)</p>
-          </div>
-          <div class="quote reveal-once">
-            <p class="quote__a">VALIDATION</p>
-            <p class="quote__b">Présence confirmée sur créneaux définis. Communication courte. Conduite stable.</p>
-            <p class="quote__c">— Mention interne (placeholder)</p>
-          </div>
-        </div>
-
-        <div class="rule"></div>
-      </div>
-    
-      <div class="sectionEdge" aria-hidden="true"></div>
-      <div class="runwayBand" data-marker="AUTHORITY" data-tone="ice" aria-hidden="true"></div>
-</section>
-
-    <!-- 8. ATHOS / UNITÉ -->
-    <section class="section" id="athos" aria-label="Unité">
-      <div class="wrap">
-        <p class="kicker reveal-once">ATHOS / UNITÉ</p>
-        <h2 class="title reveal-once">UNE ÉQUIPE. UN NIVEAU.</h2>
-        <p class="lead reveal-once">
-          Présentation resserrée. Trois profils, trois fonctions. L’humain est présent, mais la posture reste élite :
-          tenue, sobriété, rôle clair.
-        </p>
-
-        <div class="athos">
-          <article class="card member reveal-once">
-            <div class="card__img" style="background-image:url('assets/athos-01.jpg')"></div>
-            <div class="card__body">
-              <p class="card__t">ATHOS-1 / LEAD</p>
-              <p class="card__p">Coordination, doctrine, sécurité. Décision et tenue de ligne.</p>
-              <span class="badge">Rôle : Commandement</span>
-            </div>
-          </article>
-
-          <article class="card member reveal-once">
-            <div class="card__img" style="background-image:url('assets/athos-02.jpg')"></div>
-            <div class="card__body">
-              <p class="card__t">ATHOS-2 / WING</p>
-              <p class="card__p">Formation, stabilité, contrôle des écarts. Exécution sans bruit.</p>
-              <span class="badge">Rôle : Ailier</span>
-            </div>
-          </article>
-
-          <article class="card member reveal-once">
-            <div class="card__img" style="background-image:url('assets/athos-03.jpg')"></div>
-            <div class="card__body">
-              <p class="card__t">ATHOS-3 / SUPPORT</p>
-              <p class="card__p">Préparation, support procédure, continuité et standardisation.</p>
-              <span class="badge">Rôle : Support</span>
-            </div>
-          </article>
-        </div>
-
-        <div class="rule"></div>
-      </div>
-    
-      <div class="sectionEdge" aria-hidden="true"></div>
-      <div class="runwayBand" data-marker="UNIT" data-tone="amber" aria-hidden="true"></div>
-</section>
-
-    <!-- 9. GALERIE -->
-    <section class="section" id="galerie" aria-label="Galerie">
-      <div class="wrap">
-        <p class="kicker reveal-once">GALERIE</p>
-        <h2 class="title reveal-once">DERNIÈRE IMMERSION.</h2>
-        <p class="lead reveal-once">
-          Peu d’images. Choix strict. Impact visuel, pas de quantité.
-        </p>
-
-        <div class="gallery">
-          <div class="g g--1 reveal-once" style="background-image:url('assets/gallery-01.jpg');"></div>
-          <div class="g g--2 reveal-once" style="background-image:url('assets/gallery-02.jpg');"></div>
-          <div class="g g--3 reveal-once" style="background-image:url('assets/gallery-03.jpg');"></div>
-          <div class="g g--4 reveal-once" style="background-image:url('assets/gallery-04.jpg');"></div>
-        </div>
-
-        <div class="rule"></div>
-      </div>
-    
-      <div class="sectionEdge" aria-hidden="true"></div>
-      <div class="runwayBand" data-marker="VISUAL" data-tone="ice" aria-hidden="true"></div>
-</section>
-
-    <!-- 10. CONTACT -->
-    <section class="section" id="contact" aria-label="Contact">
-      <div class="wrap">
-        <p class="kicker reveal-once">CONTACT</p>
-        <h2 class="title reveal-once">FIN DE MISSION.</h2>
-        <p class="lead reveal-once">
-          Canal sobre. Message court. Réponse selon disponibilité opérationnelle.
-        </p>
-
-        <div class="contact">
-          <div class="panel reveal-once">
-            <p class="panel__t">Procédure</p>
-            <p class="panel__p">
-              Décrire la demande en une phrase. Indiquer contexte, créneau, et attentes. Aucun échange superflu.
-            </p>
-            <ul class="panel__list">
-              <li><span class="small">Objet</span><br/>Demande / coordination / présence</li>
-              <li><span class="small">Format</span><br/>Court, factuel, sans marketing</li>
-              <li><span class="small">Délai</span><br/>Réponse selon disponibilité</li>
+            <ul class="bullets" aria-label="Points de doctrine">
+              <li>Brief court. Plan clair. Marges contrôlées.</li>
+              <li>Communication utile. Aucun bruit de fond.</li>
+              <li>Position tenue. Corrections minimales.</li>
             </ul>
-          </div>
+          </article>
 
-          <div class="panel reveal-once">
-            <p class="panel__t">Canaux</p>
-            <p class="panel__p">
-              Remplacer ces placeholders par les canaux officiels (Discord, email, etc.).
+          <article class="panel panel--dense" data-reveal>
+            <h3 class="h3">Sécurité et tenue</h3>
+            <p class="p">
+              Toute action est conduite comme une séquence : préparation, contrôle, exécution, retour d’expérience.
+              L’objectif n’est pas la vitesse : c’est la stabilité du résultat, répétable et traçable.
             </p>
-            <ul class="panel__list">
-              <li><span class="small">Email</span><br/><a href="mailto:contact@sam.example">contact@sam.example</a></li>
-              <li><span class="small">Discord</span><br/>Lien à renseigner</li>
-              <li><span class="small">Brief</span><br/>Horaires / créneaux</li>
-            </ul>
-          </div>
+            <div class="labels" aria-label="Repères">
+              <span class="labelPill">PROCÉDURES</span>
+              <span class="labelPill">CHECK-LISTS</span>
+              <span class="labelPill">CADRE PUBLIC</span>
+              <span class="labelPill">RETEX</span>
+            </div>
+          </article>
         </div>
       </div>
-    
-      <div class="sectionEdge" aria-hidden="true"></div>
-      <div class="runwayBand" data-marker="RTB" data-tone="amber" aria-hidden="true"></div>
-</section>
+    </section>
 
-    <footer>
+    <!-- PRESTATIONS -->
+    <section class="capabilities" id="capabilities" aria-label="Capacités">
       <div class="wrap">
-        <div>S.A.M. — SECTION AÉRIENNE DE MALDEN</div>
-        <div>VERSION PUBLIQUE / ONE-PAGE</div>
+        <div class="sectionHead" data-reveal>
+          <p class="kicker">CAPACITÉS</p>
+          <h2 class="h2">Moyens présentés sans emphase.</h2>
+          <p class="p">
+            Interventions cadrées : démonstration et entraînement. La crédibilité vient de la constance et du niveau d’exécution.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card" data-reveal>
+            <div class="card__media" aria-hidden="true">
+              <img data-src="assets/prestation-escort.jpg" alt="" />
+            </div>
+            <div class="card__body">
+              <h3 class="h3">Escort</h3>
+              <p class="p">Vol encadré, tenue de position, transitions propres, sécurité prioritaire.</p>
+              <div class="card__meta">
+                <span class="meta">Cadre</span><span class="sep">—</span><span class="meta">Formation / Démonstration</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="card__media" aria-hidden="true">
+              <img data-src="assets/prestation-training.jpg" alt="" />
+            </div>
+            <div class="card__body">
+              <h3 class="h3">Training</h3>
+              <p class="p">Brief, check-lists, communication. Répétition jusqu’à stabilité d’exécution.</p>
+              <div class="card__meta">
+                <span class="meta">Cadre</span><span class="sep">—</span><span class="meta">Procédures / Sécurité</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="card__media" aria-hidden="true">
+              <img data-src="assets/prestation-demo.jpg" alt="" />
+            </div>
+            <div class="card__body">
+              <h3 class="h3">Démonstration</h3>
+              <p class="p">Synchronisation, scénario maîtrisé, sobriété. Aucune surenchère.</p>
+              <div class="card__meta">
+                <span class="meta">Cadre</span><span class="sep">—</span><span class="meta">Meeting / Public</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- AVIS / LÉGITIMITÉ -->
+    <section class="legitimacy" id="legitimacy" aria-label="Légitimité">
+      <div class="wrap">
+        <div class="sectionHead" data-reveal>
+          <p class="kicker">LÉGITIMITÉ</p>
+          <h2 class="h2">Reconnaissance et cadre.</h2>
+          <p class="p">
+            La légitimité n’est pas un décor. Elle se construit par la tenue : régularité, sécurité, cadre public.
+            Repères institutionnels : signatures, validations, citations — format sobre, traçable.
+          </p>
+        </div>
+
+        <div class="signatures">
+          <figure class="signature" data-reveal>
+            <div class="signature__logo" aria-hidden="true">
+              <img data-src="assets/sam-logo.png" alt="" />
+            </div>
+            <blockquote class="quote">
+              <p>« La visibilité impose la discipline. Toute démonstration publique doit rester sobre, maîtrisée et sécurisée. »</p>
+            </blockquote>
+            <figcaption class="sig">
+              <span class="sig__name">Autorité de coordination</span>
+              <span class="sig__role">(placeholder)</span>
+            </figcaption>
+          </figure>
+
+          <figure class="signature" data-reveal>
+            <div class="signature__logo signature__logo--empty" aria-hidden="true"></div>
+            <blockquote class="quote">
+              <p>« Capacité confirmée sur créneaux définis. Communication courte. Conduite stable. »</p>
+            </blockquote>
+            <figcaption class="sig">
+              <span class="sig__name">Mention interne</span>
+              <span class="sig__role">(placeholder)</span>
+            </figcaption>
+          </figure>
+
+          <figure class="signature" data-reveal>
+            <div class="signature__logo signature__logo--empty" aria-hidden="true"></div>
+            <blockquote class="quote">
+              <p>« La rigueur n’est pas une posture. Elle s’observe dans les détails : briefs, checks, tenue, retours. »</p>
+            </blockquote>
+            <figcaption class="sig">
+              <span class="sig__name">Référent sécurité</span>
+              <span class="sig__role">(placeholder)</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ATHOS / UNITÉ -->
+    <section class="unit" id="unit" aria-label="Athos">
+      <div class="wrap">
+        <div class="sectionHead" data-reveal>
+          <p class="kicker">ATHOS / UNITÉ</p>
+          <h2 class="h2">Une équipe. Un niveau.</h2>
+          <p class="p">Présentation resserrée. Trois profils, trois fonctions. L’humain est présent, la posture reste élite : tenue, sobriété, rôle clair.</p>
+        </div>
+
+        <div class="members">
+          <article class="member" data-reveal>
+            <div class="member__photo" aria-hidden="true">
+              <img data-src="assets/athos-01.jpg" alt="" />
+            </div>
+            <div class="member__body">
+              <div class="member__head">
+                <h3 class="h3">ATHOS-1</h3>
+                <span class="callsign">LEAD</span>
+              </div>
+              <p class="p">Coordination, doctrine, sécurité. Décision et tenue de ligne.</p>
+              <div class="member__role">
+                <span class="labelPill">Rôle</span> <span class="role">Commandement</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="member" data-reveal>
+            <div class="member__photo" aria-hidden="true">
+              <img data-src="assets/athos-02.jpg" alt="" />
+            </div>
+            <div class="member__body">
+              <div class="member__head">
+                <h3 class="h3">ATHOS-2</h3>
+                <span class="callsign">WING</span>
+              </div>
+              <p class="p">Formation, stabilité, contrôle des écarts. Exécution sans bruit.</p>
+              <div class="member__role">
+                <span class="labelPill">Rôle</span> <span class="role">Ailier</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="member" data-reveal>
+            <div class="member__photo" aria-hidden="true">
+              <img data-src="assets/athos-03.jpg" alt="" />
+            </div>
+            <div class="member__body">
+              <div class="member__head">
+                <h3 class="h3">ATHOS-3</h3>
+                <span class="callsign">SUPPORT</span>
+              </div>
+              <p class="p">Préparation, support procédure, continuité et standardisation.</p>
+              <div class="member__role">
+                <span class="labelPill">Rôle</span> <span class="role">Support</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERIE -->
+    <section class="gallery" id="gallery" aria-label="Galerie">
+      <div class="wrap">
+        <div class="sectionHead" data-reveal>
+          <p class="kicker">GALERIE</p>
+          <h2 class="h2">Dernière immersion.</h2>
+          <p class="p">Peu d’images. Choix strict. Impact visuel, pas de quantité.</p>
+        </div>
+
+        <div class="galleryGrid">
+          <figure class="shot shot--wide" data-reveal>
+            <img data-src="assets/gallery-01.jpg" alt="Galerie — visuel 01" />
+          </figure>
+          <figure class="shot" data-reveal>
+            <img data-src="assets/gallery-02.jpg" alt="Galerie — visuel 02" />
+          </figure>
+          <figure class="shot" data-reveal>
+            <img data-src="assets/gallery-03.jpg" alt="Galerie — visuel 03" />
+          </figure>
+          <figure class="shot shot--wide" data-reveal>
+            <img data-src="assets/gallery-04.jpg" alt="Galerie — visuel 04" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact" aria-label="Contact">
+      <div class="wrap">
+        <div class="sectionHead" data-reveal>
+          <p class="kicker">CONTACT</p>
+          <h2 class="h2">Fin de mission.</h2>
+          <p class="p">Canal sobre. Message court. Réponse selon disponibilité opérationnelle.</p>
+        </div>
+
+        <div class="grid grid--2">
+          <article class="panel panel--dense" data-reveal>
+            <h3 class="h3">Procédure de demande</h3>
+            <p class="p">
+              Décrire la demande en une phrase. Indiquer le contexte, le créneau et l’attendu.
+              Aucun échange superflu : un message clair vaut une coordination rapide.
+            </p>
+            <ul class="bullets" aria-label="Consignes">
+              <li>Objet : demande / coordination / présence</li>
+              <li>Format : court, factuel, sans emphase</li>
+              <li>Délai : réponse selon disponibilité</li>
+            </ul>
+
+            <div class="labels" aria-label="Canaux">
+              <span class="labelPill">Email</span> <span class="mono">contact@sam.example</span><br />
+              <span class="labelPill">Discord</span> <span class="mono">Lien à renseigner</span><br />
+              <span class="labelPill">Brief</span> <span class="mono">Horaires / créneaux</span>
+            </div>
+          </article>
+
+          <form class="form panel panel--dense" data-reveal>
+            <h3 class="h3">Message formel</h3>
+
+            <label class="field">
+              <span class="field__label">Objet</span>
+              <input class="input" type="text" name="subject" autocomplete="off" placeholder="Demande / coordination / présence" />
+            </label>
+
+            <label class="field">
+              <span class="field__label">Créneau</span>
+              <input class="input" type="text" name="slot" autocomplete="off" placeholder="Date, heure, durée estimée" />
+            </label>
+
+            <label class="field">
+              <span class="field__label">Message</span>
+              <textarea class="input input--area" name="message" rows="6" placeholder="Une phrase de contexte. Une phrase d’attendu. Aucun surplus."></textarea>
+            </label>
+
+            <label class="field">
+              <span class="field__label">Contact</span>
+              <input class="input" type="text" name="contact" autocomplete="off" placeholder="Email / Discord (identifiant)" />
+            </label>
+
+            <div class="form__actions">
+              <button class="btn btn--primary" type="button" id="form-send">Préparer l’envoi</button>
+              <span class="form__note">Ou utiliser le canal officiel renseigné.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer" aria-label="Pied de page">
+      <div class="wrap footer__inner">
+        <div class="footer__left">
+          <span class="kicker kicker--thin">S.A.M. — SECTION AÉRIENNE DE MALDEN</span>
+          <p class="p p--small">Version publique / one-page. Cadre sobre, institutionnel.</p>
+        </div>
+        <div class="footer__right">
+          <span class="mono">© S.A.M. — Malden</span>
+        </div>
       </div>
     </footer>
   </main>
-<script src="js/main.js"></script>
+
+  <script src="js/main.js" defer></script>
 </body>
 </html>
