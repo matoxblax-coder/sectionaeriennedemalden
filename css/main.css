@@ -992,3 +992,108 @@ body::after{
     linear-gradient(180deg, rgba(0,0,0,.72), rgba(0,0,0,.42), rgba(0,0,0,.80));
   opacity:.92;
 }
+
+
+/* =========================
+   V7 — Option A : Piste / Balisage
+   Repères discrets entre sections
+   ========================= */
+
+.section{
+  position: relative;
+}
+
+.runwayBand{
+  position:absolute;
+  left:0; right:0; bottom:-1px;
+  height:64px;
+  pointer-events:none;
+  z-index: 4;
+  opacity:.22;
+  mix-blend-mode: screen;
+  filter: saturate(.95) contrast(1.02);
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(0,0,0,.0) 20%, rgba(0,0,0,.18) 100%);
+}
+
+.runwayBand[data-tone="ice"]{
+  --rb-dot: rgba(110,160,255,.22);
+  --rb-line: rgba(110,160,255,.14);
+  --rb-halo: rgba(110,160,255,.12);
+}
+
+.runwayBand,
+.runwayBand[data-tone="amber"]{
+  --rb-dot: rgba(216,180,90,.20);
+  --rb-line: rgba(216,180,90,.12);
+  --rb-halo: rgba(216,180,90,.10);
+}
+
+.runwayBand::before{
+  /* marker label */
+  content: attr(data-marker);
+  position:absolute;
+  left:18px;
+  bottom:14px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: rgba(231,236,243,.58);
+  opacity:.85;
+}
+
+.runwayBand::after{
+  /* beacons + ticks */
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height:64px;
+  background:
+    /* main baseline */
+    linear-gradient(90deg, transparent 0%, var(--rb-line) 8%, var(--rb-line) 92%, transparent 100%),
+    /* tick marks */
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 34px,
+      rgba(231,236,243,.06) 35px,
+      transparent 36px
+    ),
+    /* beacons */
+    repeating-radial-gradient(circle at 0 72%,
+      var(--rb-dot) 0 2px,
+      transparent 3px 28px
+    ),
+    /* soft halo */
+    radial-gradient(900px 80px at 50% 86%, var(--rb-halo), transparent 70%);
+  opacity: 1;
+  transform: perspective(900px) rotateX(14deg) translateY(8px);
+  transform-origin: 50% 100%;
+  filter: blur(.2px);
+}
+
+@keyframes runwayBreath{
+  0%,100%{ opacity:.18; }
+  50%{ opacity:.30; }
+}
+
+.runwayBand{
+  animation: runwayBreath 9s ease-in-out infinite;
+}
+
+/* Slight section edge line to "lock" the chapter */
+.sectionEdge{
+  position:absolute;
+  left:0; right:0; top:0;
+  height:1px;
+  background: linear-gradient(90deg, transparent, rgba(231,236,243,.10), transparent);
+  opacity:.45;
+  pointer-events:none;
+  z-index: 3;
+}
+
+/* Give inter-sections a subtle runway hush */
+.sky, .immersive-section, #mission, #prestations, #legitimite, #athos, #galerie, #contact{
+  position: relative;
+}
