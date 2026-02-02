@@ -7,6 +7,11 @@
   <title>Section Aérienne de Malden — S.A.M.</title>
   <meta name="description" content="Canal institutionnel — accès contrôlé. Doctrine, rigueur, permanence." />
   <link rel="preload" as="image" href="assets/hero-runway.jpg" />
+  <link rel="preload" as="image" href="assets/alphajet.png" />
+  <link rel="preload" as="image" href="assets/rafale.png" />
+  <link rel="preload" as="image" href="assets/alphajet-bg-01.jpg" />
+  <link rel="preload" as="image" href="assets/rafale-bg-01.jpg" />
+
   <link rel="icon" href="assets/sam-logo.png" />
   <link rel="stylesheet" href="css/main.css" />
 </head>
@@ -64,17 +69,38 @@
     </div>
   </header>
 
+  <div class="hudnav" aria-hidden="true">
+    <div class="hudnav__label">
+      <span class="hudnav__k">SECTEUR</span>
+      <span class="hudnav__v" id="hudnav-value">—</span>
+    </div>
+    <div class="hudnav__rail"></div>
+    <div class="hudnav__ticks" id="hudnav-ticks">
+      <span class="hudnav__tick" data-hud-tick="hero"></span>
+      <span class="hudnav__tick" data-hud-tick="silence"></span>
+      <span class="hudnav__tick" data-hud-tick="alphajet"></span>
+      <span class="hudnav__tick" data-hud-tick="rafale"></span>
+      <span class="hudnav__tick" data-hud-tick="doctrine"></span>
+      <span class="hudnav__tick" data-hud-tick="capabilities"></span>
+      <span class="hudnav__tick" data-hud-tick="legitimacy"></span>
+      <span class="hudnav__tick" data-hud-tick="unit"></span>
+      <span class="hudnav__tick" data-hud-tick="gallery"></span>
+      <span class="hudnav__tick" data-hud-tick="contact"></span>
+    </div>
+  </div>
+
+
   <main id="main">
     <!-- HERO / DÉCOLLAGE -->
-    <section class="hero" id="hero" aria-label="Décollage">
+    <section class="hero" id="hero" aria-label="Décollage" data-hud-label="DÉCOLLAGE">
       <div class="hero__bg" aria-hidden="true">
-        <img class="hero__img" src="assets/hero-runway.jpg" alt="" decoding="async" />
+        <img class="hero__img" src="assets/hero-runway.jpg" fetchpriority="high" alt="" decoding="async" />
       </div>
 
       <div class="hero__hud" aria-hidden="true"></div>
 
       <div class="hero__wm" aria-hidden="true">
-        <img class="hero__wmImg" src="assets/sam-logo-wm.png" alt="" decoding="async" />
+        <img class="hero__wmImg" src="assets/sam-logo.png" alt="" decoding="async" />
       </div>
 
       <div class="hero__content">
@@ -106,7 +132,7 @@
     </section>
 
     <!-- TRANSITION CIEL (silence) -->
-    <section class="silence" aria-label="Transition">
+    <section class="silence" aria-label="Transition" data-hud-label="SILENCE" id="silence">
       <div class="silence__bg" aria-hidden="true"></div>
       <div class="silence__hud" aria-hidden="true"></div>
       <div class="silence__label" data-reveal>
@@ -119,7 +145,7 @@
     </section>
 
     <!-- SECTION IMMERSIVE ALPHAJET (MAJEURE) -->
-    <section class="module module--alphajet js-module" id="alphajet" aria-label="Module AlphaJet" data-module="alphajet" data-steps="4">
+    <section class="module module--alphajet js-module" id="alphajet" aria-label="Module AlphaJet" data-module="alphajet" data-steps="4" data-hud-label="ALPHAJET">
       <div class="module__sticky" aria-hidden="false">
         <div class="module__bg" aria-hidden="true">
           <div class="bg__strip">
@@ -168,7 +194,7 @@
     </section>
 
     <!-- SECTION IMMERSIVE RAFALE (SECONDE COUCHE) -->
-    <section class="module module--rafale js-module" id="rafale" aria-label="Module Rafale" data-module="rafale" data-steps="3">
+    <section class="module module--rafale js-module" id="rafale" aria-label="Module Rafale" data-module="rafale" data-steps="3" data-hud-label="RAFALE">
       <div class="module__sticky" aria-hidden="false">
         <div class="module__bg" aria-hidden="true">
           <div class="bg__strip">
@@ -215,7 +241,7 @@
     </section>
 
     <!-- MISSION / DOCTRINE -->
-    <section class="doctrine" id="doctrine" aria-label="Mission et doctrine">
+    <section class="doctrine" id="doctrine" aria-label="Mission et doctrine" data-hud-label="DOCTRINE">
       <div class="wrap">
         <div class="sectionHead" data-reveal>
           <p class="kicker">MISSION / DOCTRINE</p>
@@ -254,7 +280,7 @@
     </section>
 
     <!-- PRESTATIONS -->
-    <section class="capabilities" id="capabilities" aria-label="Capacités">
+    <section class="capabilities" id="capabilities" aria-label="Capacités" data-hud-label="CAPACITÉS">
       <div class="wrap">
         <div class="sectionHead" data-reveal>
           <p class="kicker">CAPACITÉS</p>
@@ -308,7 +334,7 @@
     </section>
 
     <!-- AVIS / LÉGITIMITÉ -->
-    <section class="legitimacy" id="legitimacy" aria-label="Légitimité">
+    <section class="legitimacy" id="legitimacy" aria-label="Légitimité" data-hud-label="LÉGITIMITÉ">
       <div class="wrap">
         <div class="sectionHead" data-reveal>
           <p class="kicker">LÉGITIMITÉ</p>
@@ -359,7 +385,7 @@
     </section>
 
     <!-- ATHOS / UNITÉ -->
-    <section class="unit" id="unit" aria-label="Athos">
+    <section class="unit" id="unit" aria-label="Athos" data-hud-label="ATHOS">
       <div class="wrap">
         <div class="sectionHead" data-reveal>
           <p class="kicker">ATHOS / UNITÉ</p>
@@ -420,7 +446,7 @@
     </section>
 
     <!-- GALERIE -->
-    <section class="gallery" id="gallery" aria-label="Galerie">
+    <section class="gallery" id="gallery" aria-label="Galerie" data-hud-label="GALERIE">
       <div class="wrap">
         <div class="sectionHead" data-reveal>
           <p class="kicker">GALERIE</p>
@@ -446,7 +472,7 @@
     </section>
 
     <!-- CONTACT -->
-    <section class="contact" id="contact" aria-label="Contact">
+    <section class="contact" id="contact" aria-label="Contact" data-hud-label="CONTACT">
       <div class="wrap">
         <div class="sectionHead" data-reveal>
           <p class="kicker">CONTACT</p>

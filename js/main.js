@@ -9,6 +9,8 @@ const SETTINGS = {
   revealRootMargin: "-10% 0px -10% 0px",
   lazyRootMargin: "1200px 0px",
   moduleInertia: 0.10,          // 0.06–0.14 : inertie ressentie
+  moduleEdgeFade: 0.12,        // 0.08–0.16 : fondu d'entrée/sortie (progress)
+  moduleMinAlpha: 0.55,        // plancher d'opacité aux bords
   parallaxStrength: 0.9,        // 0.6–1.2 : amplitude (multiplicateur de --module-parallax)
   parallaxEase: 0.12,           // lissage pointeur
   dotClickSnap: true,           // clic sur dots : positionne l'étape
@@ -108,7 +110,12 @@ function initGate(){
 
   function approve(){
     localStorage.setItem(SETTINGS.gateKey, "1");
-    unlock();
+    gate.classList.add("is-leaving");
+    // sortie contrôlée : sensation d'inertie
+    setTimeout(() => {
+      gate.classList.remove("is-leaving");
+      unlock();
+    }, 520);
   }
 
   function trapFocus(e){
@@ -202,6 +209,61 @@ function initImageFallback(){
    Form (mailTo)
    ========================================================================== */
 
+
+/* ==========================================================================
+   HUD NAV (sections actives)
+   ========================================================================== */
+
+function initSectionHud(){
+  const value = qs("#hudnav-value");
+  const ticksWrap = qs("#hudnav-ticks");
+  if (!ticksWrap) return;
+
+  const items = [
+    { id: "hero", label: "DÉCOLLAGE" },
+    { id: "silence", label: "SILENCE" },
+    { id: "alphajet", label: "ALPHAJET" },
+    { id: "rafale", label: "RAFALE" },
+    { id: "doctrine", label: "DOCTRINE" },
+    { id: "capabilities", label: "CAPACITÉS" },
+    { id: "legitimacy", label: "LÉGITIMITÉ" },
+    { id: "unit", label: "ATHOS" },
+    { id: "gallery", label: "GALERIE" },
+    { id: "contact", label: "CONTACT" }
+  ];
+
+  const nodes = items
+    .map(it => ({...it, el: document.getElementById(it.id)}))
+    .filter(it => it.el);
+
+  const tickEls = qsa("[data-hud-tick]", ticksWrap);
+  const byId = new Map(tickEls.map(t => [t.getAttribute("data-hud-tick"), t]));
+
+  let activeId = null;
+
+  const io = new IntersectionObserver((entries) => {
+    // choisir l'entrée la plus "centrée" par ratio
+    const visible = entries
+      .filter(e => e.isIntersecting)
+      .sort((a,b) => (b.intersectionRatio - a.intersectionRatio));
+
+    if (!visible.length) return;
+
+    const id = visible[0].target.id;
+    if (id === activeId) return;
+    activeId = id;
+
+    for (const it of items){
+      const tick = byId.get(it.id);
+      if (tick) tick.classList.toggle("is-active", it.id === id);
+    }
+    const current = items.find(x => x.id === id);
+    if (value && current) value.textContent = current.label;
+  }, { root: null, threshold: [0.2, 0.35, 0.5, 0.65], rootMargin: "-35% 0px -35% 0px" });
+
+  nodes.forEach(n => io.observe(n.el));
+}
+
 function initForm(){
   const btn = qs("#form-send");
   const form = qs(".form");
@@ -257,10 +319,13 @@ function initModules(){
   let lastActivity = performance.now();
 
   function onPointerMove(ev){
-    const x = (ev.clientX / window.innerWidth) * 2 - 1;
-    const y = (ev.clientY / window.innerHeight) * 2 - 1;
-    pointer.tx = x;
-    pointer.ty = y;
+    const x = ((ev.clientX / window.innerWidth) * 2 - 1);
+    const y = ((ev.clientY / window.innerHeight) * 2 - 1);
+    // clamp : évite les écarts en bord d'écran / multi-écrans
+    const cx = Math.max(-1, Math.min(1, x));
+    const cy = Math.max(-1, Math.min(1, y));
+    pointer.tx = cx;
+    pointer.ty = cy;
     lastActivity = performance.now();
     start();
   }
@@ -388,6 +453,14 @@ function createModule(section, reduced){
     const inertia = reducedLocal ? 1 : SETTINGS.moduleInertia;
     p += (targetP - p) * inertia;
 
+    // fondu d'entrée/sortie : évite les raccords secs entre modules
+    const edge = SETTINGS.moduleEdgeFade;
+    let a = 1;
+    if (p < edge) a = p / edge;
+    else if (p > (1 - edge)) a = (1 - p) / edge;
+    a = Math.max(SETTINGS.moduleMinAlpha, Math.min(1, a));
+    section.style.setProperty("--module-alpha", a.toFixed(3));
+
     // mouvement des fonds (horizontal)
     if (strip){
       const travel = (steps - 1) * window.innerWidth;
@@ -430,6 +503,7 @@ function boot(){
   initLazyImages();
   initImageFallback();
   initForm();
+  initSectionHud();
   initModules();
 }
 

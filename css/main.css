@@ -47,6 +47,7 @@
 
 *{ box-sizing: border-box; }
 html, body{ height: 100%; }
+html{ scroll-behavior: smooth; scroll-padding-top: 96px; }
 body{
   margin: 0;
   font-family: var(--font-sans);
@@ -57,6 +58,8 @@ body{
   overflow-x: hidden;
   letter-spacing: .01em;
 }
+
+section{ scroll-margin-top: 96px; }
 
 img{
   max-width: 100%;
@@ -258,6 +261,94 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .brand__sub{ display: none; }
 }
 
+
+/* ==========================================================================
+   HUD NAV (balisage)
+   ========================================================================== */
+
+.hudnav{
+  position: fixed;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  width: 16px;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  pointer-events: none;
+  opacity: .85;
+}
+.hudnav__label{
+  position: absolute;
+  right: 18px;
+  top: -34px;
+  display: grid;
+  gap: 2px;
+  padding: 10px 12px;
+  width: 180px;
+  border-radius: 14px;
+  border: 1px solid rgba(59,183,255,.18);
+  background: rgba(7,10,16,.55);
+  backdrop-filter: blur(10px);
+  transform: translateX(6px);
+}
+.hudnav__k{
+  font-size: 10px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(59,183,255,.70);
+}
+.hudnav__v{
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .10em;
+  color: rgba(240,244,255,.70);
+  text-transform: uppercase;
+}
+
+.hudnav__rail{
+  width: 1px;
+  height: 260px;
+  background: linear-gradient(180deg, rgba(59,183,255,.28), rgba(59,183,255,.04));
+  box-shadow: 0 0 0 1px rgba(0,0,0,.0);
+}
+.hudnav__ticks{
+  position: absolute;
+  top: 24px;
+  bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.hudnav__tick{
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(59,183,255,.22);
+  background: rgba(6,10,16,.55);
+  box-shadow: 0 0 0 0 rgba(215,178,26,.0);
+  transition: transform var(--dur-fast) var(--ease),
+              background var(--dur-fast) var(--ease),
+              border-color var(--dur-fast) var(--ease),
+              box-shadow var(--dur-fast) var(--ease);
+}
+.hudnav__tick.is-active{
+  border-color: rgba(215,178,26,.55);
+  background: rgba(215,178,26,.80);
+  box-shadow: 0 0 0 6px rgba(215,178,26,.12);
+  transform: scale(1.05);
+}
+
+@media (max-width: 820px){
+  .hudnav__label{ display: none; }
+}
+@media (max-width: 620px){
+  .hudnav{ right: 12px; opacity: .72; }
+  .hudnav__rail{ height: 220px; }
+}
+
 /* ==========================================================================
    Buttons
    ========================================================================== */
@@ -301,6 +392,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 .gate{
   position: fixed;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 520ms var(--ease), transform 520ms var(--ease);
+
   inset: 0;
   z-index: 100;
   display: grid;
@@ -343,7 +438,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   align-items: center;
   justify-content: space-between;
   gap: 14px;
-  margin-bottom: 18px;
+  margin-bottom: clamp(14px, 3vh, 34px);
 }
 .gate__stamp{
   font-size: 11px;
@@ -506,7 +601,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .beacons{
   position: absolute;
   left: 0; right: 0;
-  bottom: 26px;
+  bottom: clamp(18px, 4vh, 44px);
   display: flex;
   justify-content: center;
   gap: 14px;
@@ -761,6 +856,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 .module__word{
+  opacity: var(--module-alpha, 1);
   position: absolute;
   inset: 0;
   display: grid;
@@ -780,24 +876,28 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   width: min(980px, 92vw);
   height: auto;
   filter: drop-shadow(0 30px 70px rgba(0,0,0,.65));
-  transform: translate3d(calc(var(--mx, 0) * var(--module-parallax)), calc(var(--my, 0) * var(--module-parallax)), 0);
+  opacity: var(--module-alpha, 1);
+  transform: translate3d(calc(var(--mx, 0) * var(--module-parallax)), calc((var(--my, 0) * var(--module-parallax)) + var(--air-offset-y, 0px)), 0) scale(var(--air-scale, 1));
   transition: transform var(--dur-med) var(--ease);
 }
 .module__aircraft.is-broken{ display: none; }
 
 .module__panel{
+  opacity: var(--module-alpha, 1);
   position: absolute;
   z-index: 3;
-  bottom: 26px;
+  bottom: clamp(18px, 4vh, 44px);
   left: 22px;
   right: 22px;
   max-width: 640px;
 }
-.module--rafale .module__panel{ max-width: 620px; }
+.module--rafale .module__panel{
+  opacity: var(--module-alpha, 1); max-width: 620px; }
 
 @media (max-width: 620px){
   .module__panel{
-    bottom: 18px;
+  opacity: var(--module-alpha, 1);
+    bottom: clamp(14px, 3vh, 34px);
     left: 14px;
     right: 14px;
   }
@@ -1080,6 +1180,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
    ========================================================================== */
 
 @media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+
   :root{
     --dur-slow: 1ms;
     --dur-med: 1ms;
@@ -1095,3 +1197,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
    ========================================================================== */
 
 body.is-ready .hero__img{ transform: scale(1.00); transition: transform 1200ms var(--ease); }
+
+
+.gate.is-leaving{ opacity: 0; transform: translateY(-6px); }
+
+/* Module tuning (aircraft baseline + température) */
+.module--alphajet{ --air-offset-y: clamp(12px, 2.6vh, 30px); --air-scale: 1; }
+.module--rafale{ --air-offset-y: clamp(18px, 3.2vh, 44px); --air-scale: 1; }
+
+.module--alphajet .bg__hud::before{ background: linear-gradient(90deg, rgba(215,178,26,.16), transparent 42%, rgba(215,178,26,.10)); opacity: .26; }
+.module--rafale .bg__hud::before{ background: linear-gradient(90deg, rgba(59,183,255,.16), transparent 42%, rgba(59,183,255,.12)); opacity: .22; }
+
+.module--rafale .bg__slide img{ filter: saturate(.72) contrast(1.06) brightness(.65); }
