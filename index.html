@@ -99,6 +99,8 @@
 
       <div class="hero__hud" aria-hidden="true"></div>
 
+      <div class="hero__orn" aria-hidden="true"></div>
+
       <div class="hero__wm" aria-hidden="true">
         <img class="hero__wmImg" src="assets/sam-logo.png" alt="" decoding="async" />
       </div>
@@ -116,7 +118,13 @@
           Discipline volontaire : procédures, sécurité, sobriété de communication. Une signature : présence, sans bruit.
         </p>
 
-        <div class="hero__cta" data-reveal>
+        
+        <div class="hero__facts" data-reveal>
+          <div class="fact"><span class="fact__k">STATUT</span><span class="fact__v">OPÉRATIONNEL</span></div>
+          <div class="fact"><span class="fact__k">CADRE</span><span class="fact__v">PUBLIC / SÉCURISÉ</span></div>
+          <div class="fact"><span class="fact__k">PROCÉDURE</span><span class="fact__v">BRIEF • CHECK • RETEX</span></div>
+        </div>
+<div class="hero__cta" data-reveal>
           <a class="btn btn--primary" href="#doctrine">Consulter le cadre</a>
           <a class="btn btn--ghost" href="#contact">Déposer une demande</a>
         </div>
@@ -135,6 +143,7 @@
     <section class="silence" aria-label="Transition" data-hud-label="SILENCE" id="silence">
       <div class="silence__bg" aria-hidden="true"></div>
       <div class="silence__hud" aria-hidden="true"></div>
+      <div class="silence__orn" aria-hidden="true"></div>
       <div class="silence__label" data-reveal>
         <span class="kicker kicker--thin">SILENCE / ALTITUDE</span>
         <h2 class="h2">Respiration.</h2>
@@ -145,8 +154,10 @@
     </section>
 
     <!-- SECTION IMMERSIVE ALPHAJET (MAJEURE) -->
-    <section class="module module--alphajet js-module" id="alphajet" aria-label="Module AlphaJet" data-module="alphajet" data-steps="4" data-hud-label="ALPHAJET">
+    <section class="module module--alphajet js-module" id="alphajet" aria-label="Module AlphaJet" data-module="alphajet" data-steps="4" data-hud-label="ALPHAJET" data-sec="MODULE ALPHAJET" data-code="SAM/ALPHAJET">
       <div class="module__sticky" aria-hidden="false">
+        <div class="module__orn" aria-hidden="true"></div>
+
         <div class="module__bg" aria-hidden="true">
           <div class="bg__strip">
             <div class="bg__slide"><img data-src="assets/alphajet-bg-01.jpg" alt="" /></div>
@@ -194,8 +205,10 @@
     </section>
 
     <!-- SECTION IMMERSIVE RAFALE (SECONDE COUCHE) -->
-    <section class="module module--rafale js-module" id="rafale" aria-label="Module Rafale" data-module="rafale" data-steps="3" data-hud-label="RAFALE">
+    <section class="module module--rafale js-module" id="rafale" aria-label="Module Rafale" data-module="rafale" data-steps="3" data-hud-label="RAFALE" data-sec="MODULE RAFALE" data-code="SAM/RAFALE">
       <div class="module__sticky" aria-hidden="false">
+        <div class="module__orn" aria-hidden="true"></div>
+
         <div class="module__bg" aria-hidden="true">
           <div class="bg__strip">
             <div class="bg__slide"><img data-src="assets/rafale-bg-01.jpg" alt="" /></div>
@@ -241,7 +254,8 @@
     </section>
 
     <!-- MISSION / DOCTRINE -->
-    <section class="doctrine" id="doctrine" aria-label="Mission et doctrine" data-hud-label="DOCTRINE">
+    <section class="doctrine" id="doctrine" aria-label="Mission et doctrine" data-hud-label="DOCTRINE" data-sec="MISSION / DOCTRINE" data-code="SAM/DOCTRINE">
+      <div class="secOrn" aria-hidden="true"></div>
       <div class="wrap">
         <div class="sectionHead" data-reveal>
           <p class="kicker">MISSION / DOCTRINE</p>
@@ -280,7 +294,8 @@
     </section>
 
     <!-- PRESTATIONS -->
-    <section class="capabilities" id="capabilities" aria-label="Capacités" data-hud-label="CAPACITÉS">
+    <section class="capabilities" id="capabilities" aria-label="Capacités" data-hud-label="CAPACITÉS" data-sec="CAPACITÉS" data-code="SAM/CAPACITES">
+      <div class="secOrn" aria-hidden="true"></div>
       <div class="wrap">
         <div class="sectionHead" data-reveal>
           <p class="kicker">CAPACITÉS</p>
@@ -334,7 +349,8 @@
     </section>
 
     <!-- AVIS / LÉGITIMITÉ -->
-    <section class="legitimacy" id="legitimacy" aria-label="Légitimité" data-hud-label="LÉGITIMITÉ">
+    <section class="legitimacy" id="legitimacy" aria-label="Légitimité" data-hud-label="LÉGITIMITÉ" data-sec="LÉGITIMITÉ" data-code="SAM/LEGITIMITE">
+      <div class="secOrn" aria-hidden="true"></div>
       <div class="wrap">
         <div class="sectionHead" data-reveal>
           <p class="kicker">LÉGITIMITÉ</p>
@@ -385,7 +401,8 @@
     </section>
 
     <!-- ATHOS / UNITÉ -->
-    <section class="unit" id="unit" aria-label="Athos" data-hud-label="ATHOS">
+    <section class="unit" id="unit" aria-label="Athos" data-hud-label="ATHOS" data-sec="ATHOS / UNITÉ" data-code="SAM/ATHOS">
+      <div class="secOrn" aria-hidden="true"></div>
       <div class="wrap">
         <div class="sectionHead" data-reveal>
           <p class="kicker">ATHOS / UNITÉ</p>
@@ -446,7 +463,8 @@
     </section>
 
     <!-- GALERIE -->
-    <section class="gallery" id="gallery" aria-label="Galerie" data-hud-label="GALERIE">
+    <section class="gallery" id="gallery" aria-label="Galerie" data-hud-label="GALERIE" data-sec="GALERIE" data-code="SAM/GALERIE">
+      <div class="secOrn" aria-hidden="true"></div>
       <div class="wrap">
         <div class="sectionHead" data-reveal>
           <p class="kicker">GALERIE</p>
@@ -472,7 +490,8 @@
     </section>
 
     <!-- CONTACT -->
-    <section class="contact" id="contact" aria-label="Contact" data-hud-label="CONTACT">
+    <section class="contact" id="contact" aria-label="Contact" data-hud-label="CONTACT" data-sec="CONTACT" data-code="SAM/CONTACT">
+      <div class="secOrn" aria-hidden="true"></div>
       <div class="wrap">
         <div class="sectionHead" data-reveal>
           <p class="kicker">CONTACT</p>
